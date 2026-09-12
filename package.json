@@ -1,0 +1,17 @@
+{
+  "name": "shaham-flowers-catalog",
+  "version": "1.0.0",
+  "description": "Modern scrolling web catalog for Shaham Flowers (@shaham_flowers) in Oman",
+  "scripts": {
+    "start": "npx serve -l 8088 .",
+    "dev": "python -m http.server 8088"
+  },
+  "keywords": [
+    "flowers",
+    "oman",
+    "catalog",
+    "whatsapp"
+  ],
+  "author": "Antigravity Autonomous Team",
+  "license": "MIT"
+}
