@@ -61,8 +61,34 @@
     <div class="ambient-glow w-80 h-80 sm:w-[500px] sm:h-[500px] bg-emerald-900/20 bottom-96 right-4 sm:right-20"></div>
   </div>
 
+  <!-- GLOBAL STYLE SWITCHER BAR -->
+  <div class="fixed top-0 left-0 right-0 z-50 h-9 bg-stone-950/95 backdrop-blur-md border-b border-amber-500/25 px-2.5 sm:px-6 flex items-center justify-between text-xs">
+    <div class="max-w-7xl mx-auto w-full flex items-center justify-between gap-2 overflow-x-auto no-scrollbar">
+      <div class="flex items-center gap-1.5 shrink-0">
+        <span class="text-[11px] font-bold text-amber-400 flex items-center gap-1">
+          <span>🎨</span>
+          <span class="hidden sm:inline" data-en="Design Variations:" data-ar="أنماط وتصاميم الموقع:">أنماط وتصاميم الموقع:</span>
+        </span>
+      </div>
+      <div class="flex items-center gap-1 sm:gap-1.5 shrink-0 overflow-x-auto">
+        <a href="index.html" class="px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-bold bg-amber-400 text-stone-950 shadow-sm whitespace-nowrap">
+          <span>🌙 1. Royal Dark (Active)</span>
+        </a>
+        <a href="lookbook.html" class="px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-medium bg-stone-900/90 text-stone-300 hover:text-white border border-stone-800 whitespace-nowrap transition-colors">
+          <span>📖 2. Editorial Lookbook</span>
+        </a>
+        <a href="grid.html" class="px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-medium bg-stone-900/90 text-stone-300 hover:text-white border border-stone-800 whitespace-nowrap transition-colors">
+          <span>🖼️ 3. Visual Grid</span>
+        </a>
+        <a href="minimal.html" class="px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-medium bg-stone-900/90 text-stone-300 hover:text-white border border-stone-800 whitespace-nowrap transition-colors">
+          <span>▫️ 4. Minimal Atelier</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
   <!-- STICKY TOP NAVIGATION -->
-  <header class="fixed top-0 left-0 right-0 z-40 glass-nav transition-all duration-300">
+  <header class="fixed top-9 left-0 right-0 z-40 glass-nav transition-all duration-300">
     <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
       
       <!-- Brand Logo -->
@@ -130,7 +156,7 @@
     </div>
   </header>
 
-  <main class="pt-16 sm:pt-20">
+  <main class="pt-24 sm:pt-28">
 
     <!-- HERO SECTION -->
     <section id="hero" class="relative min-h-[85vh] flex items-center justify-center py-16 sm:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
