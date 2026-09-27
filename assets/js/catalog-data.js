@@ -8,8 +8,8 @@
 const APP_CONFIG = {
   storeName: "Shaham Flowers",
   storeNameAr: "زهور الشهم",
-  taglineEn: "Bespoke Floral Atelier & Luxury Chocolate Combos",
-  taglineAr: "أتيليه الزهور الطبيعية وبوكسات الشوكولاتة الفاخرة",
+  taglineEn: "Flowers • Chocolates • Customized Gifts & More",
+  taglineAr: "زهور • شوكولاتة • هدايا مخصصة وأكثر",
   email: "info@shahamflowers.com",
   whatsappNumber: "+96899791925", // Official line: 9979 1925
   phone: "9979 1925",
