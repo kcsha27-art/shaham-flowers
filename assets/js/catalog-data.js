@@ -1,23 +1,26 @@
 /**
- * Shaham Flowers (@shaham_flowers) - Digital Catalog Data
- * Location: Sultanate of Oman
+ * Shaham Flowers (زهور الشهم - @shaham_flowers) - Official Digital Catalog Data
+ * Location: Alaya, Wilayat Ibra, Ash Sharqiyah North Governorate, Oman
  * Google Maps: https://share.google/tIfg9DtMQ6ufnoszy
+ * WhatsApp Order Line: +968 9979 1925
  */
 
 const APP_CONFIG = {
   storeName: "Shaham Flowers",
-  storeNameAr: "زهور شهم",
+  storeNameAr: "زهور الشهم",
+  taglineEn: "Bespoke Floral Atelier & Luxury Chocolate Combos",
+  taglineAr: "أتيليه الزهور الطبيعية وبوكسات الشوكولاتة الفاخرة",
   email: "info@shahamflowers.com",
-  whatsappNumber: "+96899791925", // Official verified order line (9979 1925)
+  whatsappNumber: "+96899791925", // Official line: 9979 1925
   phone: "9979 1925",
   phoneFormatted: "+968 9979 1925",
   instagramHandle: "shaham_flowers",
   instagramUrl: "https://www.instagram.com/shaham_flowers/",
   googleMapsUrl: "https://share.google/tIfg9DtMQ6ufnoszy",
-  branchLocation: "Alaya, Ibra, Ash Sharqiyah North Governorate, Oman",
+  branchLocation: "Alaya, Ibra, Ash Sharqiyah North Governorate, Sultanate of Oman",
   branchLocationAr: "العلاية، ولاية إبراء - محافظة شمال الشرقية، سلطنة عُمان",
-  coverage: "Ready for service & delivery across the whole North Sharqiyah Governorate",
-  coverageAr: "جاهزون لخدمتكم وتوصيل الطلبات لكافة ولايات محافظة شمال الشرقية",
+  coverage: "Express delivery across all Wilayats of Ash Sharqiyah North (Ibra, Bidiyah, Al Mudhaibi, Al Qabil, Wadi Bani Khalid, Dema Wa Thaieen)",
+  coverageAr: "توصيل سريع لكافة ولايات محافظة شمال الشرقية (إبراء، بدية، المضيبي، القابل، وادي بني خالد، دماء والطائيين)",
   wilayat: "Alaya, Ibra",
   wilayatAr: "العلاية، ولاية إبراء",
   hours: "Sat: 8 AM–1 PM, 4–10:30 PM | Sun, Tue–Thu: 8 AM–12 AM | Mon: 7:30 AM–2 PM, 3–11 PM | Fri: 9–11:30 AM, 4–10:30 PM",
@@ -34,282 +37,343 @@ const APP_CONFIG = {
 };
 
 const CATEGORIES = [
-  { id: "all", nameEn: "All Collections", nameAr: "جميع التنسيقات", icon: "sparkles" },
-  { id: "bouquets", nameEn: "Fresh Bouquets", nameAr: "باقات الورد الطبيعي", icon: "flower-2" },
-  { id: "bridal", nameEn: "Bridal & Weddings", nameAr: "مسكات وتنسيق الأعراس", icon: "heart" },
-  { id: "gifts", nameEn: "Gift & Chocolate Trays", nameAr: "صواني وبوكسات الهدايا", icon: "gift" },
-  { id: "forever", nameEn: "Forever Preserved Roses", nameAr: "الورد الدائم والأكريليك", icon: "gem" },
-  { id: "events", nameEn: "Occasions & Newborn", nameAr: "التخرج والمواليد", icon: "party-popper" }
+  { id: "all", nameEn: "All Arrangements", nameAr: "جميع التنسيقات", icon: "sparkles" },
+  { id: "official", nameEn: "Official Classics", nameAr: "التشكيلة الرسمية", icon: "award" },
+  { id: "bouquets", nameEn: "Hand Bouquets", nameAr: "باقات اليد الفاخرة", icon: "flower-2" },
+  { id: "combos", nameEn: "Flower & Chocolate Combos", nameAr: "كومبو الورد والشوكولاتة", icon: "gift" },
+  { id: "tables", nameEn: "Table & Event Displays", nameAr: "تنسيقات الطاولات والمجالس", icon: "gem" },
+  { id: "bridal", nameEn: "Bridal Posies", nameAr: "مسكات العرائس الملكية", icon: "heart" }
 ];
 
 const PRODUCTS = [
+  // 1. Official Shaham Flowers Item S201
   {
-    id: 1,
-    code: "SH-BQ01",
-    category: "bouquets",
-    titleEn: "The Royal Velvet Bouquet",
-    titleAr: "باقة الورد الملكي المخملي",
+    id: "S201",
+    code: "S201",
+    category: "official",
+    isOfficial: true,
+    titleEn: "Single Rose Wrapped Bouquet",
+    titleAr: "باقة الوردة الفردية الأنيقة",
+    tagEn: "Special Value",
+    tagAr: "قيمة مميزة",
+    priceOmr: "0.700",
+    priceDisplayEn: ".700 Bz",
+    priceDisplayAr: "700 بيسة",
+    descriptionEn: "1 hand-selected premium imported Red Rose wrapped in sleek modern black paper with fresh Gypsophila baby's breath, eucalyptus greenery, and an iconic red satin ribbon.",
+    descriptionAr: "وردة حمراء طبيعية مختارة بعناية فائقة مع لمسات ناعمة من الجبسوفيليا البيضاء وأغصان الكينا الخضراء وتغليف أسود ملكي وشريطة حمراء أنيقة.",
+    stemsEn: "1 Dutch Grade A Red Rose, Gypsophila Baby's Breath, Eucalyptus Greenery, Luxury Sleeve",
+    stemsAr: "وردة حمراء طبيعية هولندية، جبسوفيليا بيضاء، أغصان الكينا الخضراء، تغليف أسود شفاف",
+    careEn: "Place in fresh water with flower food, keep away from direct sunlight.",
+    careAr: "ضع الساق في ماء نقي بارد واحفظها في مكان لطيف بعيداً عن حرارة الشمس.",
+    imageUrl: "assets/images/s201_single_rose.jpg"
+  },
+
+  // 2. Official Shaham Flowers Item S203
+  {
+    id: "S203",
+    code: "S203",
+    category: "official",
+    isOfficial: true,
+    titleEn: "Standard Hand Bouquet (5 Roses)",
+    titleAr: "باقة اليد الكلاسيكية (5 ورود)",
     tagEn: "Bestseller",
     tagAr: "الأكثر طلباً",
+    priceOmr: "2.500",
+    priceDisplayEn: "2.500 OMR",
+    priceDisplayAr: "2.500 ر.ع",
+    descriptionEn: "5 pristine velvety red roses arranged with aromatic eucalyptus and delicate gypsophila in sculptural pleated white art wrap, tied with a vivid red silk ribbon.",
+    descriptionAr: "5 ورود جوري حمراء مخملية متناسقة بأناقة متناهية مع الجبسوفيليا الخفيفة وأوراق الكينا العطرة وتغليف أبيض مطوي وشريطة حمراء ملكية.",
+    stemsEn: "5 Dutch Red Naomi Roses, Gypsophila Baby's Breath, Italian Ruscus / Eucalyptus",
+    stemsAr: "5 وردات جوري حمراء هولندية، جبسوفيليا، أوراق الكينا، تغليف أبيض فندقي فاخر",
+    careEn: "Trim stems at a 45-degree angle every 2 days and refresh water.",
+    careAr: "قص أطراف السيقان بشكل مائل كل يومين مع تبديل ماء الفازة.",
+    imageUrl: "assets/images/s203_standard_hand_bouquet.jpg"
+  },
+
+  // 3. Official Shaham Flowers Item S204
+  {
+    id: "S204",
+    code: "S204",
+    category: "official",
+    isOfficial: true,
+    titleEn: "White Mix Hand Bouquet (Ruffle Net)",
+    titleAr: "باقة المكس الأبيض الفاخرة (تور ناعم)",
+    tagEn: "Signature Art",
+    tagAr: "تحفة الأتيليه",
+    priceOmr: "10.000",
+    priceDisplayEn: "10.000 OMR",
+    priceDisplayAr: "10.000 ر.ع",
+    descriptionEn: "A magnificent full round bouquet blending pure white roses, ruffled carnations, purple limonium accents, and eucalyptus foliage, crowned by a couture pleated net cloth wrap with a white satin ribbon.",
+    descriptionAr: "باقة مستديرة غنية بزهور الجوري الأبيض والقرنفل الملكي مع لمسات ساحرة من الستاتيس والليمونيوم البنفسجي، محاطة بتغليف كوتور فرنسي من التور الأبيض المكشكش وشريطة حرير ناصعة.",
+    stemsEn: "White Avalanche Roses, White Carnations, Purple Statice/Limonium, Eucalyptus, Couture Ruffle Net Wrap",
+    stemsAr: "جوري أبيض ملكي، قرنفل أبيض، ليمونيوم بنفسجي، أغصان الكينا، تغليف تور مكشكش فاخر",
+    careEn: "Keep in a cool ambient temperature room. Mist petals lightly once daily.",
+    careAr: "احفظها في غرفة باردة ورش أطراف البتلات برذاذ ماء خفيف يومياً.",
+    imageUrl: "assets/images/s204_white_mix_hand_bouquet.jpg"
+  },
+
+  // 4. Official Shaham Flowers Item S202
+  {
+    id: "S202",
+    code: "S202",
+    category: "tables",
+    isOfficial: true,
+    titleEn: "VIP Table Bouquet (White Rose & Lily)",
+    titleAr: "تنسيق طاولة ملكي (جوري أبيض وليليوم)",
+    tagEn: "Luxury Centerpiece",
+    tagAr: "فخامة المجالس والمناسبات",
+    priceOmr: "16.000",
+    priceDisplayEn: "16.000 OMR",
+    priceDisplayAr: "16.000 ر.ع",
+    descriptionEn: "Grand low-profile table arrangement featuring fragrant white Casablanca lilies, spray roses, avalanche white roses, and sculptural looped emerald palm leaves on a luxury marble base.",
+    descriptionAr: "تنسيق طاولة ومجالس فاخر مستوحى من القصور العُمانية، يجمع بين زهور الليليوم البيضاء الفواحة والجوري الأبيض الملكي وطيّات سعف النخيل الخضراء المصقولة.",
+    stemsEn: "Casablanca White Lilies, White Avalanche Roses, Baby Spray Roses, Glossy Palm Ribbon Foliage",
+    stemsAr: "ليليوم كازابلانكا أبيض عطري، جوري أبيض، بيبي روز ناعم، أوراق نخيل مصقولة دائرية",
+    careEn: "Add water to the floral oasis sponge every 24 hours to maintain lasting hydration.",
+    careAr: "أضف نصف كوب ماء إلى إسفنجة التنسيق كل 24 ساعة لضمان نضارة الزهور لعدة أيام.",
+    imageUrl: "assets/images/s202_table_bouquet_white_lily.jpg"
+  },
+
+  // 5. Flower & Chocolate Combo Flagship 1
+  {
+    id: "SH-CMB01",
+    code: "SH-CMB01",
+    category: "combos",
+    isOfficial: false,
+    titleEn: "Royal Rose & Belgian Truffle Gift Box",
+    titleAr: "بوكس الورد الملكي والشوكولاتة البلجيكية",
+    tagEn: "Custom Combo",
+    tagAr: "كومبو قابل للتخصيص",
     priceOmr: "18.500",
-    descriptionEn: "25 premium imported Dutch Red Naomi roses hand-tied in matte forest green wrap with silk champagne gold ribbon.",
-    descriptionAr: "25 وردة حمراء هولندية فاخرة ملفوفة بتغليف زيتي مخملي أنيق مع شريطة ذهبية شفقية فاخرة.",
-    stemsEn: "25 Red Naomi Dutch Roses, Ruscus Greenery, Gold Satin Ribbon",
-    stemsAr: "25 وردة هولندية حمراء، أغصان الرسكوس الخضراء، شريطة حرير ذهبية",
-    careEn: "Keep in cool air, trim stems diagonally every 2 days, replenish fresh water.",
-    careAr: "احفظها في جو بارد، قص أطراف السيقان بشكل مائل كل يومين مع تجديد الماء.",
-    imageUrl: "https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    id: 2,
-    code: "SH-BQ02",
-    category: "bouquets",
-    titleEn: "Blushing Peach Garden",
-    titleAr: "باقة حديقة الخوخ الوردية",
-    tagEn: "Trending",
-    tagAr: "دارج ومميز",
-    priceOmr: "22.000",
-    descriptionEn: "Dreamy arrangement of garden peach roses, blush pink spray roses, white lisianthus, and aromatic eucalyptus.",
-    descriptionAr: "تناغم ساحر بين ورود الخوخ الطبيعية، بيبي روز وردي، زهور الليسيانثوس البيضاء، وأوراق الكينا العطرة.",
-    stemsEn: "30 Curated Pastel Blooms & Eucalyptus foliage",
-    stemsAr: "30 غصن زهور باستيل طبيعية مع أوراق الكينا العطرية",
-    careEn: "Mist petals gently, keep away from direct sunlight and AC drafts.",
-    careAr: "رش البتلات برذاذ خفيف واحفظها بعيداً عن حرارة الشمس المباشرة.",
-    imageUrl: "https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    id: 3,
-    code: "SH-BQ03",
-    category: "bouquets",
-    titleEn: "Pure Serenity White Lilies",
-    titleAr: "باقة النقاء الملكية بالليليوم",
-    tagEn: "Classic",
-    tagAr: "فخامة كلاسيكية",
-    priceOmr: "25.000",
-    descriptionEn: "Fragrant Casablanca white lilies paired with pristine white roses, gypsophila baby breath, and emerald foliage.",
-    descriptionAr: "زهور الليليوم البيضاء الفواحة ممزوجة مع الجوري الأبيض، ونسمات الجبسوفيليا الفاتنة بأناقة لا تضاهى.",
-    stemsEn: "6 Casablanca Lily Stems, 15 White Avalanche Roses, Gypsophila",
-    stemsAr: "6 أغصان ليليوم كازابلانكا، 15 وردة جوري بيضاء، جبسوفيليا",
-    careEn: "Remove pollen dusters to prolong bloom life and preserve fragrance.",
-    careAr: "أزل حبوب اللقاح بلطف للحفاظ على نقاء الزهور وعمرها الطويل.",
-    imageUrl: "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    id: 4,
-    code: "SH-BR01",
-    category: "bridal",
-    titleEn: "Bridal Grace Orchid Cascade",
-    titleAr: "مسكة العروس الملكية بالأوركيد",
-    tagEn: "Bridal VIP",
-    tagAr: "خاص للعرائس",
-    priceOmr: "45.000",
-    descriptionEn: "Artisanal hand bouquet crafted with pure white Phalaenopsis orchids, mini calla lilies, and Italian silver foliage.",
-    descriptionAr: "مسكة عروس مصممة بأعلى درجات الإتقان من زهور أوركيد الفالينوبسيس الطبيعية، الكالا الملكية، واللمسات الإيطالية.",
-    stemsEn: "Cascading White Orchids, Calla Lilies, Pearl Satin Wrap",
-    stemsAr: "أوركيد أبيض منسدل، كالا ليلى، مقبض حريري مطرز باللؤلؤ",
-    careEn: "Store in floral hydration capsule until wedding photo shoot.",
-    careAr: "تحفظ في كبسولة الترطيب الخاصة حتى موعد جلسة التصوير وزفة الحفل.",
-    imageUrl: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    id: 5,
-    code: "SH-BR02",
-    category: "bridal",
-    titleEn: "Bohemian Sunset Bridal Posy",
-    titleAr: "مسكة العروس البوهيمية الذهبية",
-    tagEn: "Bridal Special",
-    tagAr: "لمسة عصرية",
-    priceOmr: "38.000",
-    descriptionEn: "Modern Bohemian bridal bouquet with champagne roses, preserved bunny tails, dried pampas, and warm tones.",
-    descriptionAr: "مسكة عروس عصرية بوهيمية بدرجات الشمبانيا الدافئة، ورود الأوف وايت، ونفحات البامباس الطبيعي المجفف.",
-    stemsEn: "24 Champagne Roses, Ranunculus, Natural Dried Grasses",
-    stemsAr: "24 وردة شمبانيا، رانونكلوس أبيض، أعشاب مجففة فاخرة",
-    careEn: "Includes preservation keepsake packaging.",
-    careAr: "تأتي مع حقيبة خاصة لحفظ الذكرى بعد مراسم الزفاف.",
-    imageUrl: "https://images.unsplash.com/photo-1546842931-886c185b4c8c?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    id: 6,
-    code: "SH-GF01",
-    category: "gifts",
-    titleEn: "Royal Bloom & Chocolate Luxury Tray",
-    titleAr: "صينية الفخامة الملكية - ورد وشوكولاتة",
-    tagEn: "VIP Gift",
-    tagAr: "هدية فاخرة",
-    priceOmr: "32.000",
-    descriptionEn: "Mirrored golden tray filled with red spray roses, baby breath, and 500g of artisan Belgian chocolates with custom acrylic topper.",
-    descriptionAr: "صينية مرايا ذهبية منسقة بالورد الطبيعي والبيبي روز الفاخر مع 500 جرام شوكولاتة بلجيكية وعبارة أكريليك مخصصة.",
-    stemsEn: "20 Spray Roses, Fresh Greenery, 500g Premium Chocolates, Acrylic Topper",
-    stemsAr: "20 غصن بيبي روز، خضار طبيعي، 500 غرام شوكولاتة بلجيكية، لوحة أكريليك",
-    careEn: "Chocolates kept at climate-controlled conditions; flowers fully hydrated in oasis.",
-    careAr: "الشوكولاتة محفوظة بدرجة برودة مثالية؛ والورد مثبت في إسفنجة مائية تحافظ على نضارته.",
+    priceDisplayEn: "18.500 OMR",
+    priceDisplayAr: "18.500 ر.ع",
+    descriptionEn: "Customizable dual-layer luxury box combining 15 red Naomi roses with an acrylic drawer of 16 artisan Belgian dark & hazelnut truffles and gold dust accents.",
+    descriptionAr: "بوكس إهداء مزدوج فاخر يجمع بين 15 وردة جوري حمراء مخملية مع درج أكريليك أنيق يحتوي على 16 حبة شوكولاتة بلجيكية فاخرة بالمكسرات والبرالين.",
+    stemsEn: "15 Red Naomi Roses + 16 Belgian Luxury Truffles + Personalized Arabic Acrylic Plate",
+    stemsAr: "15 وردة جوري حمراء + 16 حبة شوكولاتة بلجيكية فاخرة + لوح أكريليك باسم المهدى له",
+    careEn: "Store chocolates in a cool room (18-20°C). Water floral sponge gently.",
+    careAr: "احفظ الشوكولاتة في مكان معتدل البرودة (18-20 درجة) وأضف قليلاً من الماء للإسفنجة.",
     imageUrl: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=80"
   },
+
+  // 6. Flower & Chocolate Combo Flagship 2
   {
-    id: 7,
-    code: "SH-GF02",
-    category: "gifts",
-    titleEn: "Prestige Perfume & Floral Cylinder",
-    titleAr: "اسطوانة الورد المخملية مع حامل العطر",
-    tagEn: "Gift Set",
-    tagAr: "تنسيق إهداء",
-    priceOmr: "28.000",
-    descriptionEn: "Deep emerald velvet cylinder box featuring peach and ivory roses, customized with a secure velvet pedestal for your chosen perfume.",
-    descriptionAr: "بوكس اسطواني من المخمل الزيتي الراقي يجمع بين ورود الخوخ والعاج الطبيعية، ومجهز بقاعدة مخملية لحمل زجاجة العطر.",
-    stemsEn: "22 Fresh Bloom Stems, Velvet Cylinder Box, Custom Ribbon",
-    stemsAr: "22 غصن ورد طبيعي، اسطوانة مخملية فاخرة، شريطة خاصة",
-    careEn: "Water the floral oasis foam with 50ml cool water every 2 days.",
-    careAr: "اسكب 50 مل ماء بارد في منتصف الإسفنجة كل يومين للحفاظ على نضارة الورد.",
-    imageUrl: "https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=800&q=80"
+    id: "SH-CMB02",
+    code: "SH-CMB02",
+    category: "combos",
+    isOfficial: false,
+    titleEn: "Blush Garden & Ferrero Golden Keepsake",
+    titleAr: "صينية الباستيل مع شوكولاتة فيريرو روشيه",
+    tagEn: "Trending Combo",
+    tagAr: "كومبو مميز",
+    priceOmr: "14.000",
+    priceDisplayEn: "14.000 OMR",
+    priceDisplayAr: "14.000 ر.ع",
+    descriptionEn: "An ethereal presentation of blush spray roses, white lisianthus, and a pyramid of golden Ferrero Rocher chocolates presented in an acrylic keepsake tray.",
+    descriptionAr: "تنسيق رقيق يجمع بيبي روز بلش خوخي وزهور الليسيانثوس البيضاء مع هرم شوكولاتة فيريرو روشيه الذهبية في صينية أكريليك شفافة.",
+    stemsEn: "20 Pastel Blooms + 16 Ferrero Rocher Chocolates + Silk Ribbon",
+    stemsAr: "20 غصن زهور باستيل طبيعية + 16 حبة فيريرو روشيه + شريطة حرير",
+    careEn: "Keep in a cool dry space, replenish water for flowers.",
+    careAr: "احفظها في جو معتدل ولطيف وجدد الماء للزهور كل يومين.",
+    imageUrl: "https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?auto=format&fit=crop&w=800&q=80"
   },
+
+  // 7. Hand Bouquet - Grand Velvet
   {
-    id: 8,
-    code: "SH-FR01",
-    category: "forever",
-    titleEn: "Enchanted Forever Rose Dome",
-    titleAr: "قبة الورد الدائم الساحرة مع إضاءة LED",
-    tagEn: "Lasts 3+ Years",
-    tagAr: "تدوم لأكثر من 3 سنوات",
+    id: "SH-BQ05",
+    code: "SH-BQ05",
+    category: "bouquets",
+    isOfficial: false,
+    titleEn: "Grand Velvet 25 Red Roses",
+    titleAr: "باقة الورد الجوري المخملي (25 وردة)",
+    tagEn: "Classic Love",
+    tagAr: "رمز العشق الكلاسيكي",
     priceOmr: "15.000",
-    descriptionEn: "100% natural preserved Ecuadorian rose that never wilts, housed inside a crystal glass dome with micro-LED fairy lights and wooden base.",
-    descriptionAr: "وردة طبيعية إكوادورية دائمة تدوم لعدة سنوات دون ماء، محفوظة داخل قبة زجاجية كريستالية مع إضاءة LED دافئة.",
-    stemsEn: "1 Preserved Giant Ecuadorian Rose, Real Fallen Petals, LED Glass Dome",
-    stemsAr: "وردة إكوادورية دائمة عملاقة، بتلات طبيعية، قبة زجاجية مع قاعدة خشبية",
-    careEn: "Requires NO water. Keep away from humid bathrooms or direct sunlight.",
-    careAr: "لا تحتاج إلى ماء إطلاقاً! احفظها بعيداً عن الرطوبة وأشعة الشمس المباشرة.",
-    imageUrl: "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    id: 9,
-    code: "SH-FR02",
-    category: "forever",
-    titleEn: "Sapphire Blue Preserved Rose Box",
-    titleAr: "مكعب الورد الدائم الأزرق الملكي",
-    tagEn: "Limited Edition",
-    tagAr: "إصدار حصري",
-    priceOmr: "16.500",
-    descriptionEn: "Royal sapphire preserved Ecuadorian rose in a high-gloss acrylic cube with bottom slide drawer for personal jewelry or notes.",
-    descriptionAr: "وردة إكوادورية زرقاء ملكية دائمة في مكعب أكريليك شفاف عالي النقاء مع درج سري سفلي لوضع المجوهرات أو كرت الإهداء.",
-    stemsEn: "1 Preserved Sapphire Rose in Acrylic Keepsake Box",
-    stemsAr: "وردة دائمة بلون أزرق ملكي، صندوق أكريليك شفاف مع درج",
-    careEn: "Zero maintenance required. Keeps vibrant color for years.",
-    careAr: "لا تحتاج لأي صيانة، تحتفظ برونقها ولونها المميز لسنوات عديدة.",
+    priceDisplayEn: "15.000 OMR",
+    priceDisplayAr: "15.000 ر.ع",
+    descriptionEn: "25 long-stemmed Ecuadorian red roses hand-tied in matte dark emerald wrapping with gold foil edges and a trailing satin bow.",
+    descriptionAr: "25 وردة إكوادورية حمراء طويلة الساق ملفوفة بتغليف زيتي غامق مع حواف ذهبية ناعمة وشريطة ساتان منسدلة.",
+    stemsEn: "25 Ecuadorian Red Naomi Roses, Ruscus, Golden Edge Wrapping",
+    stemsAr: "25 وردة جوري أحمر إكوادوري، أوراق الرسكوس، تغليف فاخر",
+    careEn: "Trim stems every 2 days diagonally and keep in cool fresh water.",
+    careAr: "قص أطراف السيقان بشكل مائل كل يومين وضعها في فازة ماء بارد نقي.",
     imageUrl: "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80"
   },
+
+  // 8. Bridal Posy Flagship
   {
-    id: 10,
-    code: "SH-EV01",
-    category: "events",
-    titleEn: "Graduation Honor Golden Bouquet",
-    titleAr: "باقة وسام التخرج الملكية",
-    tagEn: "Graduation",
-    tagAr: "مناسبة تخرج",
-    priceOmr: "20.000",
-    descriptionEn: "Celebratory mix of bright Dutch sunflowers, yellow roses, and solidago, crowned with an acrylic graduation cap and custom name banner.",
-    descriptionAr: "باقة احتفالية مبهجة تجمع زهور دوار الشمس الهولندية والورد الأصفر، متوجة بقبعة تخرج أكريليك وشريطة مخصصة بالاسم.",
-    stemsEn: "Sunflowers, Yellow Roses, Solidago, Acrylic Cap Pick & Ribbon",
-    stemsAr: "دوار شمس، جوري أصفر، سوليداجو، مجسم قبعة تخرج وشريطة بالاسم",
-    careEn: "Keep in water, enjoy the bright celebration blooms.",
-    careAr: "احفظها في ماء عذب واستمتع ببهجة التخرج والنجاح.",
-    imageUrl: "https://images.unsplash.com/photo-1597848212624-a19eb35e2651?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    id: 11,
-    code: "SH-EV02",
-    category: "events",
-    titleEn: "Welcome Baby Cloud Arrangement",
-    titleAr: "تنسيق غيمة استقبال المواليد",
-    tagEn: "Newborn",
-    tagAr: "استقبال مواليد",
-    priceOmr: "26.000",
-    descriptionEn: "Gentle cloud of baby-blue or soft-pink hydrangeas and white spray roses, accompanied by a plush keepsake teddy bear and acrylic welcome plaque.",
-    descriptionAr: "تنسيق ناعم من هيدرانجيا البيبي بلو أو الوردي مع بيبي روز ناصع، ودب دمية تذكاري فاخر ولوحة أكريليك ترحيبية بالمولود.",
-    stemsEn: "Hydrangeas, Spray Roses, Gypsophila, Keepsake Teddy, Acrylic Plaque",
-    stemsAr: "هيدرانجيا، بيبي روز، جبسوفيليا، دمية ناعمة، لوحة ترحيب",
-    careEn: "Hydrangeas love water! Spray petals once a day with fresh cool mist.",
-    careAr: "زهور الهيدرانجيا تعشق الترطيب! رش البتلات برذاذ ماء خفيف يومياً.",
-    imageUrl: "https://images.unsplash.com/photo-1533616688419-b7a585564566?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    id: 12,
-    code: "SH-BR03",
+    id: "SH-BR01",
+    code: "SH-BR01",
     category: "bridal",
-    titleEn: "VIP Wedding Car Fresh Floral Styling",
-    titleAr: "تنسيق سيارة العروس والمناسبات بالورد الطبيعي",
-    tagEn: "Event Service",
-    tagAr: "خدمة حفلات",
-    priceOmr: "35.000",
-    descriptionEn: "Complete luxury floral decoration for the wedding car: bonnet V-arrangement, door handle clusters, and ribbon trims on-site in Oman.",
-    descriptionAr: "تزيين متكامل لسيارة العروس بأجود أنواع الورد الطبيعي: مقدمة السيارة، مقابض الأبواب، والمرايا الجانبية بتركيب احترافي بخدمة احترافية.",
-    stemsEn: "Full Car Floral Kit (Front V-Spray, 4 Door Accents, Ribbon Package)",
-    stemsAr: "طقم ورد طبيعي للسيارة (مقدمة السيارة، 4 مقابض أبواب، أشرطة فاخرة)",
-    careEn: "Installed with safe suction mounts that never scratch vehicle paint.",
-    careAr: "يتم التثبيت بقواعد سيليكون ناعمة آمنة 100% على طلاء ولمعان السيارة.",
-    imageUrl: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80"
+    isOfficial: false,
+    titleEn: "The Royal Omani Bridal Posy",
+    titleAr: "مسكة العروس الملكية العُمانية",
+    tagEn: "VIP Bridal",
+    tagAr: "خاص للعرائس",
+    priceOmr: "28.000",
+    priceDisplayEn: "28.000 OMR",
+    priceDisplayAr: "28.000 ر.ع",
+    descriptionEn: "Bespoke bridal bouquet crafted with white garden roses, calla lilies, delicate phalaenopsis orchids, pearl pin handles, and cascading Italian foliage.",
+    descriptionAr: "مسكة عروس ملكية مصممة خصيصاً لأفراح سلطنة عُمان، تتألف من ورد الجوري الأبيض وزهور الكالا الأنيقة والأوركيد مع مقبض مطرز باللؤلؤ وشريطة حرير فرنسية.",
+    stemsEn: "White Garden Roses, Mini Calla Lilies, Phalaenopsis Orchids, Pearl Handle Wrap",
+    stemsAr: "ورد أبيض هولندي، زهور كالا، أوركيد فاخر، مقبض لؤلؤ وشريطة حرير",
+    careEn: "Delivered in water vial; mist lightly before the bridal entrance.",
+    careAr: "تسلم مع حاضنة ماء خاصة لتبقى بنضارتها حتى لحظة الزفة والتقاط الصور.",
+    imageUrl: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80"
   }
 ];
 
-/**
- * Generate formatted WhatsApp click-to-chat URL
- * Target pattern: https://wa.me/YOURNUMBER?text=Hello,%20I%20am%20interested%20in%20[Item%20Name]
- */
-function getWhatsAppOrderUrl(product, isArabic = false) {
-  const phone = APP_CONFIG.whatsappNumber.replace(/[^0-9]/g, "");
-  let message = "";
-  
-  if (isArabic) {
-    message = `مرحباً زهور شهم، أود الاستفسار والطلب من متجركم:
+// Interactive Customizer Pricing & Elements Matrix
+const CUSTOMIZER_DATA = {
+  bases: [
+    {
+      id: "hand_bouquet",
+      nameEn: "Hand-Tied Ruffle / Classic Wrap",
+      nameAr: "باقة يد بتغليف كوتور أنيق",
+      basePrice: 0.0,
+      icon: "flower-2",
+      image: "assets/images/s204_white_mix_hand_bouquet.jpg"
+    },
+    {
+      id: "cylinder_box",
+      nameEn: "Matte Black Royal Cylinder Box",
+      nameAr: "بوكس أسطواني ملكي أسود فاخر",
+      basePrice: 3.5,
+      icon: "box",
+      image: "https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      id: "acrylic_drawer_box",
+      nameEn: "Dual Flower & Chocolate Acrylic Box",
+      nameAr: "بوكس أكريليك مزدوج (ورد + شوكولاتة)",
+      basePrice: 5.0,
+      icon: "gift",
+      image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      id: "table_centerpiece",
+      nameEn: "VIP Table & Majlis Arrangement",
+      nameAr: "تنسيق طاولة ومجالس كبار الشخصيات",
+      basePrice: 6.0,
+      icon: "gem",
+      image: "assets/images/s202_table_bouquet_white_lily.jpg"
+    }
+  ],
 
-*المنتج:* ${product.titleAr} (${product.titleEn})
-*الرمز:* [${product.code}]
-*السعر:* ${product.priceOmr} ر.ع
-*الفرع:* العلاية، ولاية إبراء
-*نطاق التوصيل:* محافظة شمال الشرقية
+  flowerTiers: [
+    {
+      id: "single_stem",
+      nameEn: "Item S201: Single Rose (.700Bz)",
+      nameAr: "كود S201: وردة مفردة (700 بيسة)",
+      stems: 1,
+      price: 0.700,
+      previewImg: "assets/images/s201_single_rose.jpg"
+    },
+    {
+      id: "five_roses",
+      nameEn: "Item S203: 5 Roses Bouquet (2.500 OMR)",
+      nameAr: "كود S203: باقة 5 وردات (2.500 ر.ع)",
+      stems: 5,
+      price: 2.500,
+      previewImg: "assets/images/s203_standard_hand_bouquet.jpg"
+    },
+    {
+      id: "white_mix_ruffle",
+      nameEn: "Item S204: White Mix Ruffle Net (10.000 OMR)",
+      nameAr: "كود S204: باقة مكس أبيض تور (10.000 ر.ع)",
+      stems: 20,
+      price: 10.000,
+      previewImg: "assets/images/s204_white_mix_hand_bouquet.jpg"
+    },
+    {
+      id: "twenty_five_naomi",
+      nameEn: "25 Premium Red Naomi Roses (15.000 OMR)",
+      nameAr: "25 وردة جوري أحمر ملكي (15.000 ر.ع)",
+      stems: 25,
+      price: 15.000,
+      previewImg: "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      id: "table_lily_roses",
+      nameEn: "Item S202: Table Lilies & Roses (16.000 OMR)",
+      nameAr: "كود S202: تنسيق الليليوم والجوري (16.000 ر.ع)",
+      stems: 30,
+      price: 16.000,
+      previewImg: "assets/images/s202_table_bouquet_white_lily.jpg"
+    },
+    {
+      id: "vip_fifty_roses",
+      nameEn: "VIP 50 Grand Royal Blooms (28.000 OMR)",
+      nameAr: "50 وردة فاخرة ملكية كبرى (28.000 ر.ع)",
+      stems: 50,
+      price: 28.000,
+      previewImg: "https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?auto=format&fit=crop&w=800&q=80"
+    }
+  ],
 
-أرجو إفادتي بإمكانية التوصيل والوقت المتاح. شكراً!`;
-  } else {
-    message = `Hello Shaham Flowers, I am interested in ordering:
+  chocolateCombos: [
+    {
+      id: "none",
+      nameEn: "No Chocolates (Flowers Only)",
+      nameAr: "زهور فقط بدون شوكولاتة",
+      price: 0.0,
+      icon: "x"
+    },
+    {
+      id: "ferrero_box",
+      nameEn: "Ferrero Rocher Golden Pyramid (+3.500 OMR)",
+      nameAr: "هرم شوكولاتة فيريرو روشيه (+3.500 ر.ع)",
+      price: 3.500,
+      icon: "award"
+    },
+    {
+      id: "belgian_truffles",
+      nameEn: "Artisan Belgian Truffles Box (+6.000 OMR)",
+      nameAr: "بوكس ترافل شوكولاتة بلجيكية فاخرة (+6.000 ر.ع)",
+      price: 6.000,
+      icon: "gift"
+    },
+    {
+      id: "luxury_patchi_godiva",
+      nameEn: "Luxury Patchi / Godiva Selection (+9.500 OMR)",
+      nameAr: "تشكيلة شوكولاتة باتشي / جوديفا فاخرة (+9.500 ر.ع)",
+      price: 9.500,
+      icon: "sparkles"
+    }
+  ],
 
-*Item:* ${product.titleEn} (${product.titleAr})
-*Code:* [${product.code}]
-*Price:* ${product.priceOmr} OMR
-*Store:* Alaya, Ibra
-*Delivery:* North Sharqiyah Governorate
+  addons: [
+    {
+      id: "acrylic_nameplate",
+      nameEn: "Custom Acrylic Calligraphy Name Tag (+2.000 OMR)",
+      nameAr: "لوح أكريليك ذهبي بالاسم والخط العربي (+2.000 ر.ع)",
+      price: 2.000
+    },
+    {
+      id: "helium_balloon",
+      nameEn: "Celebration Helium Balloon (+1.500 OMR)",
+      nameAr: "بالون هيليوم للمناسبة (+1.500 ر.ع)",
+      price: 1.500
+    },
+    {
+      id: "luxury_card",
+      nameEn: "Gold Foil Handwritten Greeting Card (+0.800 OMR)",
+      nameAr: "كرت إهداء بختم شمعي وخط يدوي فاخر (+0.800 ر.ع)",
+      price: 0.800
+    }
+  ],
 
-Please let me know availability and delivery options. Thank you!`;
-  }
-  
-  return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-}
+  wilayats: [
+    { id: "ibra", nameEn: "Wilayat Ibra (Local Delivery)", nameAr: "ولاية إبراء (توصيل محلي مباشر)" },
+    { id: "bidiyah", nameEn: "Wilayat Bidiyah", nameAr: "ولاية بدية" },
+    { id: "al_mudhaibi", nameEn: "Wilayat Al Mudhaibi", nameAr: "ولاية المضيبي" },
+    { id: "al_qabil", nameEn: "Wilayat Al Qabil", nameAr: "ولاية القابل" },
+    { id: "wadi_bani_khalid", nameEn: "Wilayat Wadi Bani Khalid", nameAr: "ولاية وادي بني خالد" },
+    { id: "dema_wa_thaieen", nameEn: "Wilayat Dema Wa Thaieen", nameAr: "ولاية دماء والطائيين" },
+    { id: "other", nameEn: "Other Location in Oman", nameAr: "موقع آخر في سلطنة عُمان" }
+  ]
+};
 
-/**
- * Generate quick custom inquiry message URL
- */
-function getWhatsAppCustomUrl(details, isArabic = false) {
-  const phone = APP_CONFIG.whatsappNumber.replace(/[^0-9]/g, "");
-  let message = "";
-  
-  if (isArabic) {
-    message = `مرحباً زهور شهم، أود طلب تصميم خاص من متجركم:
-
-*المناسبة:* ${details.occasion || 'عامة'}
-*الألوان المفضلة:* ${details.palette || 'حسب التنسيق'}
-*الإضافات:* ${details.addons || 'لا يوجد'}
-*الميزانية التقريبية:* ${details.budget || 'غير محدد'}
-*الموقع:* العلاية، إبراء (محافظة شمال الشرقية)
-
-أرجو التواصل لتأكيد التفاصيل وتنسيق الطلب. شكراً!`;
-  } else {
-    message = `Hello Shaham Flowers, I would like to request a bespoke custom floral arrangement:
-
-*Occasion:* ${details.occasion || 'General'}
-*Color Palette:* ${details.palette || 'Florist Choice'}
-*Add-ons:* ${details.addons || 'None'}
-*Estimated Budget:* ${details.budget || 'Flexible'}
-*Store & Area:* Alaya, Ibra (North Sharqiyah Governorate)
-
-Please advise on customized designs and delivery options. Thank you!`;
-  }
-  
-  return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = { APP_CONFIG, CATEGORIES, PRODUCTS, CUSTOMIZER_DATA };
 }

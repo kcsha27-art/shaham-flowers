@@ -1,22 +1,21 @@
 /**
- * Shaham Flowers (@shaham_flowers) - Application Controller
- * Handles GSAP ScrollTrigger animations, interactive catalog filtering,
- * WhatsApp conversion engine routing, modal drawers, and bilingual toggling.
+ * Shaham Flowers (زهور الشهم - @shaham_flowers)
+ * Core Application Controller: Catalog rendering, Category Filters,
+ * Bilingual switcher, Modal Drawer, and Structured WhatsApp URL Engine.
  */
 
-let currentLang = 'ar'; // Default to Arabic (local standard in Oman, Oman) with instant EN toggle
+window.currentLang = 'ar'; // Default Arabic for Oman
 let currentCategory = 'all';
+let activeModalProduct = null;
 
 document.addEventListener('DOMContentLoaded', () => {
   initIcons();
   renderCategories();
   renderCatalog();
-  initCustomOrderForm();
-  initFab();
   initModal();
-  initAnimations();
+  initFab();
   initLangToggle();
-  initNavScroll();
+  initCustomOrderForm();
 });
 
 function initIcons() {
@@ -25,24 +24,27 @@ function initIcons() {
   }
 }
 
-// Render Category Filter Buttons
+// 1. Render Category Filter Tabs
 function renderCategories() {
   const container = document.getElementById('category-filter-bar');
-  if (!container) return;
+  if (!container || !window.CATEGORIES) return;
 
-  container.innerHTML = CATEGORIES.map(cat => {
+  const isAr = window.currentLang === 'ar';
+
+  container.innerHTML = CATEGORIES.map((cat) => {
     const isActive = cat.id === currentCategory;
-    const name = currentLang === 'ar' ? cat.nameAr : cat.nameEn;
-    const activeClass = isActive 
+    const name = isAr ? cat.nameAr : cat.nameEn;
+    const activeClass = isActive
       ? 'bg-amber-400 text-stone-950 font-bold shadow-lg shadow-amber-400/20 border-amber-400'
       : 'bg-stone-900/80 text-stone-300 hover:text-amber-300 hover:border-amber-400/40 border-stone-800';
 
     return `
       <button 
+        type="button"
         onclick="filterCategory('${cat.id}')"
-        class="category-btn whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-medium border transition-all duration-300 flex items-center gap-2 cursor-pointer ${activeClass}"
+        class="category-btn whitespace-nowrap px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium border transition-all duration-300 flex items-center gap-2 cursor-pointer ${activeClass}"
         data-category="${cat.id}">
-        <i data-lucide="${cat.icon}" class="w-4 h-4"></i>
+        <i data-lucide="${cat.icon}" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
         <span>${name}</span>
       </button>
     `;
@@ -51,96 +53,93 @@ function renderCategories() {
   initIcons();
 }
 
-// Filter Catalog Items
+// 2. Filter Category
 function filterCategory(catId) {
   currentCategory = catId;
   renderCategories();
   renderCatalog();
-  
-  // Smooth GSAP reveal on filtered cards
+
   if (window.gsap) {
-    gsap.fromTo('.product-card', 
-      { opacity: 0, y: 20, scale: 0.98 },
+    gsap.fromTo('.product-card',
+      { opacity: 0, y: 15, scale: 0.98 },
       { opacity: 1, y: 0, scale: 1, duration: 0.4, stagger: 0.05, ease: 'power2.out' }
     );
   }
 }
 
-// Render Catalog Grid
+// 3. Render Catalog Grid
 function renderCatalog() {
   const grid = document.getElementById('catalog-grid');
-  if (!grid) return;
+  if (!grid || !window.PRODUCTS) return;
 
-  const filtered = currentCategory === 'all' 
-    ? PRODUCTS 
-    : PRODUCTS.filter(p => p.category === currentCategory);
+  const filtered = currentCategory === 'all'
+    ? PRODUCTS
+    : PRODUCTS.filter((p) => p.category === currentCategory);
 
-  const isAr = currentLang === 'ar';
+  const isAr = window.currentLang === 'ar';
 
-  grid.innerHTML = filtered.map(product => {
+  grid.innerHTML = filtered.map((product) => {
     const title = isAr ? product.titleAr : product.titleEn;
     const desc = isAr ? product.descriptionAr : product.descriptionEn;
     const tag = isAr ? product.tagAr : product.tagEn;
     const waUrl = getWhatsAppOrderUrl(product, isAr);
     const orderBtnText = isAr ? 'اطلب عبر الواتساب' : 'Order via WhatsApp';
-    const detailsBtnText = isAr ? 'تفاصيل سريعة' : 'Quick Specs';
-    const currency = isAr ? 'ر.ع' : 'OMR';
+    const detailsBtnText = isAr ? 'تفاصيل التنسيق' : 'Quick Details';
+    const priceDisplay = isAr ? (product.priceDisplayAr || `${product.priceOmr} ر.ع`) : (product.priceDisplayEn || `${product.priceOmr} OMR`);
 
     return `
-      <div class="product-card glass-card rounded-2xl overflow-hidden flex flex-col group will-change-transform" data-id="${product.id}">
-        <!-- Image Container with Aspect Ratio to Guarantee 0 CLS -->
-        <div class="relative overflow-hidden aspect-card bg-stone-950">
+      <div class="product-card spotlight-card rounded-2xl overflow-hidden flex flex-col group will-change-transform" data-id="${product.id}">
+        <!-- Image Container -->
+        <div class="relative overflow-hidden aspect-[4/3] bg-stone-950">
           <img 
             src="${product.imageUrl}" 
             alt="${title}"
             loading="lazy"
             class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           />
-          <div class="absolute inset-0 bg-gradient-to-t from-stone-950 via-transparent to-transparent opacity-70"></div>
-          
-          <!-- Tag Badge -->
-          <span class="absolute top-3 ${isAr ? 'right-3' : 'left-3'} px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-emerald-950/85 text-emerald-300 border border-emerald-500/30 backdrop-blur-md">
+          <div class="absolute inset-0 bg-gradient-to-t from-stone-950 via-transparent to-transparent opacity-75"></div>
+
+          <!-- Official/Tag Badge -->
+          <span class="absolute top-3 ${isAr ? 'right-3' : 'left-3'} px-2.5 py-1 rounded-full text-[11px] font-bold tracking-wide uppercase ${product.isOfficial ? 'bg-amber-400 text-stone-950 shadow-md' : 'bg-emerald-950/90 text-emerald-300 border border-emerald-500/30'} backdrop-blur-md">
             ${tag}
           </span>
-          
-          <!-- Code Pill -->
-          <span class="absolute top-3 ${isAr ? 'left-3' : 'right-3'} px-2.5 py-1 rounded-md text-[11px] font-mono text-stone-300 bg-stone-900/80 border border-stone-700/60 backdrop-blur-md">
+
+          <!-- Item Code Pill -->
+          <span class="absolute top-3 ${isAr ? 'left-3' : 'right-3'} px-2.5 py-1 rounded-md text-[11px] font-mono text-stone-300 bg-stone-900/85 border border-stone-700/60 backdrop-blur-md">
             ${product.code}
           </span>
-          
+
           <!-- Price Badge -->
-          <div class="absolute bottom-3 ${isAr ? 'right-3' : 'left-3'} flex items-baseline gap-1 bg-stone-900/90 border border-amber-400/40 px-3 py-1 rounded-lg backdrop-blur-md">
-            <span class="text-amber-400 font-bold text-lg">${product.priceOmr}</span>
-            <span class="text-stone-300 text-xs font-semibold">${currency}</span>
+          <div class="absolute bottom-3 ${isAr ? 'right-3' : 'left-3'} flex items-baseline gap-1 bg-stone-900/90 border border-amber-400/40 px-3 py-1 rounded-lg backdrop-blur-md shadow-lg">
+            <span class="text-amber-400 font-bold text-sm sm:text-base">${priceDisplay}</span>
           </div>
         </div>
 
         <!-- Content Area -->
-        <div class="p-5 flex-1 flex flex-col justify-between">
+        <div class="p-4 sm:p-5 flex-1 flex flex-col justify-between">
           <div>
-            <h3 class="font-bold text-lg text-stone-100 group-hover:text-amber-300 transition-colors line-clamp-1">
+            <h3 class="font-bold text-base sm:text-lg text-stone-100 group-hover:text-amber-300 transition-colors line-clamp-1">
               ${title}
             </h3>
-            <p class="text-stone-400 text-xs mt-2 line-clamp-2 leading-relaxed">
+            <p class="text-stone-400 text-xs mt-1.5 line-clamp-2 leading-relaxed">
               ${desc}
             </p>
           </div>
 
           <!-- CTAs -->
-          <div class="mt-5 pt-4 border-t border-stone-800/80 flex flex-col gap-2.5">
-            <!-- Primary WhatsApp Order Button (Encodes WhatsApp URL) -->
+          <div class="mt-4 pt-3.5 border-t border-stone-800/80 flex flex-col gap-2">
             <a 
               href="${waUrl}" 
               target="_blank" 
               rel="noopener noreferrer"
-              class="btn-whatsapp w-full py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 text-sm text-center shadow-md">
+              class="btn-whatsapp w-full py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 text-xs sm:text-sm text-center shadow-md">
               <i data-lucide="message-circle" class="w-4 h-4"></i>
               <span>${orderBtnText}</span>
             </a>
 
-            <!-- Secondary Quick Specs Button -->
             <button 
-              onclick="openProductModal(${product.id})"
+              type="button"
+              onclick="openProductModal('${product.id}')"
               class="w-full py-2 px-4 rounded-xl border border-stone-800 bg-stone-900/50 hover:bg-stone-800/80 text-stone-300 hover:text-amber-300 text-xs font-medium transition-all flex items-center justify-center gap-1.5 cursor-pointer">
               <i data-lucide="eye" class="w-3.5 h-3.5"></i>
               <span>${detailsBtnText}</span>
@@ -154,9 +153,7 @@ function renderCatalog() {
   initIcons();
 }
 
-// Quick View Modal Logic
-let activeModalProduct = null;
-
+// 4. Quick View Modal
 function initModal() {
   const modal = document.getElementById('product-modal');
   const closeBtn = document.getElementById('modal-close-btn');
@@ -165,18 +162,17 @@ function initModal() {
   if (closeBtn) closeBtn.addEventListener('click', closeModal);
   if (backdrop) backdrop.addEventListener('click', closeModal);
 
-  // Close on Escape key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeModal();
   });
 }
 
 function openProductModal(productId) {
-  const product = PRODUCTS.find(p => p.id === productId);
+  const product = PRODUCTS.find((p) => p.id === productId);
   if (!product) return;
 
   activeModalProduct = product;
-  const isAr = currentLang === 'ar';
+  const isAr = window.currentLang === 'ar';
 
   const modal = document.getElementById('product-modal');
   const imgEl = document.getElementById('modal-img');
@@ -190,8 +186,8 @@ function openProductModal(productId) {
 
   if (imgEl) imgEl.src = product.imageUrl;
   if (titleEl) titleEl.textContent = isAr ? product.titleAr : product.titleEn;
-  if (codeEl) codeEl.textContent = `Ref: ${product.code}`;
-  if (priceEl) priceEl.textContent = `${product.priceOmr} ${isAr ? 'ر.ع' : 'OMR'}`;
+  if (codeEl) codeEl.textContent = `Item Code: ${product.code}`;
+  if (priceEl) priceEl.textContent = isAr ? (product.priceDisplayAr || `${product.priceOmr} ر.ع`) : (product.priceDisplayEn || `${product.priceOmr} OMR`);
   if (descEl) descEl.textContent = isAr ? product.descriptionAr : product.descriptionEn;
   if (stemsEl) stemsEl.textContent = isAr ? product.stemsAr : product.stemsEn;
   if (careEl) careEl.textContent = isAr ? product.careAr : product.careEn;
@@ -199,8 +195,8 @@ function openProductModal(productId) {
   if (waBtn) {
     waBtn.href = getWhatsAppOrderUrl(product, isAr);
     waBtn.innerHTML = `
-      <i data-lucide="message-circle" class="w-5 h-5"></i>
-      <span>${isAr ? 'طلب هذه الباقة عبر الواتساب' : 'Order This Bouquet via WhatsApp'}</span>
+      <i data-lucide="message-circle" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+      <span>${isAr ? 'طلب هذا التنسيق عبر الواتساب' : 'Order This Arrangement via WhatsApp'}</span>
     `;
   }
 
@@ -211,9 +207,9 @@ function openProductModal(productId) {
   initIcons();
 
   if (window.gsap) {
-    gsap.fromTo('#modal-content', 
-      { opacity: 0, scale: 0.92, y: 20 },
-      { opacity: 1, scale: 1, y: 0, duration: 0.3, ease: 'power2.out' }
+    gsap.fromTo('#modal-content',
+      { opacity: 0, scale: 0.94, y: 15 },
+      { opacity: 1, scale: 1, y: 0, duration: 0.25, ease: 'power2.out' }
     );
   }
 }
@@ -225,7 +221,7 @@ function closeModal() {
   if (window.gsap) {
     gsap.to('#modal-content', {
       opacity: 0,
-      scale: 0.94,
+      scale: 0.95,
       duration: 0.2,
       onComplete: () => {
         modal.classList.add('hidden');
@@ -240,7 +236,62 @@ function closeModal() {
   }
 }
 
-// Floating Action Button (FAB) Drawer Controller
+// 5. WhatsApp Formatter Helpers
+function getWhatsAppOrderUrl(product, isAr) {
+  const phone = (APP_CONFIG.whatsappNumber || "+96899791925").replace(/[^0-9]/g, "");
+  const price = isAr ? (product.priceDisplayAr || `${product.priceOmr} ر.ع`) : (product.priceDisplayEn || `${product.priceOmr} OMR`);
+  const title = isAr ? product.titleAr : product.titleEn;
+
+  let msg = "";
+  if (isAr) {
+    msg = `🌸 *طلب باقة من زهور الشهم — سلطنة عُمان* 🌸\n`
+      + `🌹 *اسم التنسيق:* ${title}\n`
+      + `🏷️ *رمز المنتج:* ${product.code}\n`
+      + `💰 *السعر:* ${price}\n`
+      + `📍 *الموقع:* ${APP_CONFIG.branchLocationAr}\n`
+      + `-----------------------------------\n`
+      + `أرجو تأكيد توفر التنسيق وإمكانية التوصيل في محافظة شمال الشرقية. شكراً لكم!`;
+  } else {
+    msg = `🌸 *Order Request — Shaham Flowers (Oman)* 🌸\n`
+      + `🌹 *Arrangement:* ${title}\n`
+      + `🏷️ *Item Code:* ${product.code}\n`
+      + `💰 *Price:* ${price}\n`
+      + `📍 *Branch:* ${APP_CONFIG.branchLocation}\n`
+      + `-----------------------------------\n`
+      + `Please confirm availability and delivery within North Sharqiyah. Thank you!`;
+  }
+
+  return `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+}
+
+function getWhatsAppCustomUrl(details, isAr) {
+  const phone = (APP_CONFIG.whatsappNumber || "+96899791925").replace(/[^0-9]/g, "");
+  let msg = "";
+
+  if (isAr) {
+    msg = `🌸 *طلب تصميم باقة خاصة — زهور الشهم* 🌸\n`
+      + `🎉 *المناسبة:* ${details.occasion || 'غير محدد'}\n`
+      + `🎨 *درجات الألوان المفضلة:* ${details.palette || 'على ذوق المنسق'}\n`
+      + `💰 *الميزانية التقريبية:* ${details.budget || 'حسب التنسيق'}\n`
+      + `✨ *الإضافات:* ${details.addons || 'لا يوجد'}\n`
+      + `📍 *الفرع:* العلاية، ولاية إبراء (محافظة شمال الشرقية)\n`
+      + `-----------------------------------\n`
+      + `أرجو تزويدي بالخيارات المتاحة وتأكيد الطلب. شكراً لكم!`;
+  } else {
+    msg = `🌸 *Custom Floral Request — Shaham Flowers* 🌸\n`
+      + `🎉 *Occasion:* ${details.occasion || 'General'}\n`
+      + `🎨 *Color Palette:* ${details.palette || "Florist's Choice"}\n`
+      + `💰 *Budget:* ${details.budget || 'Flexible'}\n`
+      + `✨ *Special Requests:* ${details.addons || 'None'}\n`
+      + `📍 *Boutique:* Alaya, Ibra (North Sharqiyah)\n`
+      + `-----------------------------------\n`
+      + `Please share options and let me know how to proceed. Thank you!`;
+  }
+
+  return `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+}
+
+// 6. Floating Action Button (FAB) Drawer
 function initFab() {
   const fabBtn = document.getElementById('fab-toggle-btn');
   const fabDrawer = document.getElementById('fab-drawer');
@@ -253,8 +304,8 @@ function initFab() {
     if (isHidden) {
       fabDrawer.classList.remove('hidden');
       if (window.gsap) {
-        gsap.fromTo(fabDrawer, 
-          { opacity: 0, y: 20, scale: 0.95 },
+        gsap.fromTo(fabDrawer,
+          { opacity: 0, y: 15, scale: 0.95 },
           { opacity: 1, y: 0, scale: 1, duration: 0.25, ease: 'power2.out' }
         );
       }
@@ -269,36 +320,34 @@ function initFab() {
     });
   }
 
-  // Quick preset links inside FAB drawer
-  const presetBtns = document.querySelectorAll('.fab-preset-btn');
-  presetBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
+  document.querySelectorAll('.fab-preset-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
       const type = btn.getAttribute('data-preset');
-      const isAr = currentLang === 'ar';
+      const isAr = window.currentLang === 'ar';
       let text = '';
 
       if (type === 'custom') {
-        text = isAr 
-          ? "مرحباً زهور شهم، أود الاستفسار عن تفصيل باقة ورد خاصة وتغليف فاخر من فرعكم بالعلاية، إبراء (محافظة شمال الشرقية)."
-          : "Hello Shaham Flowers, I would like to inquire about a bespoke custom flower arrangement from your Alaya, Ibra branch (North Sharqiyah).";
+        text = isAr
+          ? "مرحباً زهور الشهم، أود الاستفسار عن تفصيل باقة ورد خاصة وتغليف فاخر مع شوكولاتة من فرعكم بالعلاية، إبراء."
+          : "Hello Shaham Flowers, I would like to inquire about a custom bouquet and chocolate combo from your Alaya, Ibra branch.";
       } else if (type === 'express_delivery') {
         text = isAr
-          ? "مرحباً زهور شهم، هل تتوفر خدمة التوصيل السريع اليوم في ولايات محافظة شمال الشرقية؟"
-          : "Hello Shaham Flowers, is express same-day delivery available today across North Sharqiyah Governorate?";
+          ? "مرحباً زهور الشهم، هل تتوفر خدمة التوصيل السريع اليوم في ولايات محافظة شمال الشرقية؟"
+          : "Hello Shaham Flowers, is express same-day delivery available today across North Sharqiyah?";
       } else if (type === 'wedding') {
         text = isAr
-          ? "مرحباً زهور شهم، أود حجز موعد استشارة وتنسيق مسكة وباقات زفاف في فرعكم بالعلاية، ولاية إبراء."
-          : "Hello Shaham Flowers, I would like to inquire about bridal wedding bouquets at your Alaya, Ibra boutique.";
+          ? "مرحباً زهور الشهم، أود استشارة وحجز مسكة عروس وتنسيق زهور زفاف لفرع إبراء."
+          : "Hello Shaham Flowers, I would like to consult about bridal wedding bouquets at your Ibra branch.";
       }
 
-      const phone = APP_CONFIG.whatsappNumber.replace(/[^0-9]/g, "");
-      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
+      const phone = (APP_CONFIG.whatsappNumber || "+96899791925").replace(/[^0-9]/g, "");
+      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
       fabDrawer.classList.add('hidden');
     });
   });
 }
 
-// Custom Arrangement Request Generator Form
+// 7. General Custom Inquiry Form Handler
 function initCustomOrderForm() {
   const sendBtn = document.getElementById('send-custom-order-btn');
   if (!sendBtn) return;
@@ -316,87 +365,19 @@ function initCustomOrderForm() {
       addons: notesEl ? notesEl.value : ''
     };
 
-    const isAr = currentLang === 'ar';
+    const isAr = window.currentLang === 'ar';
     const waUrl = getWhatsAppCustomUrl(details, isAr);
-    window.open(waUrl, '_blank');
+    window.open(waUrl, '_blank', 'noopener,noreferrer');
   });
 }
 
-// GSAP ScrollTrigger Animations
-function initAnimations() {
-  if (!window.gsap || !window.ScrollTrigger) return;
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  // Hero Section Entrance
-  const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-  heroTl
-    .from('.hero-badge', { opacity: 0, y: -20, duration: 0.6, delay: 0.1 })
-    .from('.hero-headline', { opacity: 0, y: 30, duration: 0.8 }, '-=0.4')
-    .from('.hero-sub', { opacity: 0, y: 20, duration: 0.6 }, '-=0.4')
-    .from('.hero-cta-group', { opacity: 0, y: 20, duration: 0.6 }, '-=0.3')
-    .from('.hero-perks', { opacity: 0, y: 25, duration: 0.7 }, '-=0.2');
-
-  // Staggered reveal of catalog section
-  gsap.from('#catalog-header', {
-    scrollTrigger: {
-      trigger: '#catalog',
-      start: 'top 80%',
-      toggleActions: 'play none none none'
-    },
-    opacity: 0,
-    y: 30,
-    duration: 0.7,
-    ease: 'power2.out'
-  });
-
-  // Custom Atelier section reveal
-  gsap.from('#custom-atelier-card', {
-    scrollTrigger: {
-      trigger: '#custom-order',
-      start: 'top 80%',
-      toggleActions: 'play none none none'
-    },
-    opacity: 0,
-    scale: 0.96,
-    duration: 0.8,
-    ease: 'power2.out'
-  });
-
-  // Instagram section reveal
-  gsap.from('#instagram-card', {
-    scrollTrigger: {
-      trigger: '#instagram-feed',
-      start: 'top 85%',
-      toggleActions: 'play none none none'
-    },
-    opacity: 0,
-    y: 30,
-    duration: 0.7,
-    ease: 'power2.out'
-  });
-
-  // Google Maps location reveal
-  gsap.from('#location-card', {
-    scrollTrigger: {
-      trigger: '#location',
-      start: 'top 85%',
-      toggleActions: 'play none none none'
-    },
-    opacity: 0,
-    y: 30,
-    duration: 0.7,
-    ease: 'power2.out'
-  });
-}
-
-// Language Switcher (EN / AR)
+// 8. Bilingual Language Switcher
 function initLangToggle() {
   const toggleBtns = document.querySelectorAll('.lang-toggle-btn');
-  toggleBtns.forEach(btn => {
+  toggleBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
-      currentLang = currentLang === 'ar' ? 'en' : 'ar';
-      applyLanguage(currentLang);
+      window.currentLang = window.currentLang === 'ar' ? 'en' : 'ar';
+      applyLanguage(window.currentLang);
     });
   });
 }
@@ -409,31 +390,17 @@ function applyLanguage(lang) {
   html.setAttribute('dir', isAr ? 'rtl' : 'ltr');
   document.body.classList.toggle('rtl', isAr);
 
-  // Update dynamic translatable text nodes with [data-en] and [data-ar]
-  document.querySelectorAll('[data-en]').forEach(el => {
+  document.querySelectorAll('[data-en]').forEach((el) => {
     const text = isAr ? el.getAttribute('data-ar') : el.getAttribute('data-en');
     if (text) {
       el.textContent = text;
     }
   });
 
-  // Re-render categories and products with new language
   renderCategories();
   renderCatalog();
-}
 
-// Smooth Navbar Scroll
-function initNavScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      const targetId = this.getAttribute('href');
-      if (targetId === '#' || !targetId) return;
-
-      const targetEl = document.querySelector(targetId);
-      if (targetEl) {
-        e.preventDefault();
-        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
+  if (window.refreshCustomizerLanguage) {
+    window.refreshCustomizerLanguage();
+  }
 }
