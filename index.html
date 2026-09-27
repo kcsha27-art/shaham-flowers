@@ -11,10 +11,15 @@
   <meta property="og:description" content="أرقى باقات الورد الطبيعي وتنسيقات كومبو الشوكولاتة الفاخرة ومسكات العرائس في سلطنة عُمان.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.instagram.com/shaham_flowers/">
-  <meta property="og:image" content="assets/images/s203_standard_hand_bouquet.jpg">
+  <meta property="og:image" content="assets/images/shaham_logo.png">
 
-  <!-- Favicon icon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231B4332'><path d='M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z'/></svg>">
+  <!-- Favicon icon (Official Shaham Flowers Badge) -->
+  <link rel="icon" type="image/png" href="assets/images/shaham_logo.png">
+
+  <!-- Google Fonts: Cormorant Garamond + Plus Jakarta Sans + Tajawal -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -23,6 +28,9 @@
       darkMode: 'class',
       theme: {
         extend: {
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Tajawal', 'Georgia', 'serif'],
+          },
           colors: {
             forest: {
               50: '#F2F8F5',
@@ -33,6 +41,7 @@
               900: '#0E241B',
             },
             brass: {
+              400: '#D4AF37',
               500: '#B89345',
               600: '#946E1E',
               700: '#755412'
@@ -69,16 +78,6 @@
 </head>
 <body class="bg-[#FAF8F5] text-[#13251B] min-h-screen relative selection:bg-[#1B4332] selection:text-white rtl overflow-x-hidden w-full">
 
-  <!-- Delicate Atmospheric Botanical Watermark Layer (Warm Light Studio Depth) -->
-  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
-    <img 
-      src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=2000&q=85" 
-      alt="Luxury Atelier Floral Texture" 
-      class="w-full h-full object-cover opacity-[0.035] filter saturate-50 scale-105"
-    />
-    <div class="absolute inset-0 bg-gradient-to-b from-[#FAF8F5]/95 via-[#FAF8F5]/85 to-[#FAF8F5]/98"></div>
-  </div>
-
   <!-- TOP ANNOUNCEMENT & DELIVERY COVERAGE BAR -->
   <div class="fixed top-0 left-0 right-0 z-50 h-9 bg-[#F1ECE1] border-b border-[#E3DDD0] px-3 sm:px-6 flex items-center justify-between text-xs text-[#2A372E]">
     <div class="max-w-7xl mx-auto w-full flex items-center justify-between gap-3">
@@ -112,16 +111,18 @@
     </div>
   </div>
 
-  <!-- STICKY GLASS NAVIGATION -->
+  <!-- STICKY GLASS NAVIGATION (Collision-Free Responsive Layout) -->
   <header class="fixed top-9 left-0 right-0 z-40 glass-nav transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between gap-4">
       
-      <!-- Brand Logo & Emblem -->
-      <a href="#hero" class="flex items-center gap-2.5 sm:gap-3 group shrink-0">
-        <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-[#1B4332] flex items-center justify-center p-0.5 shadow-sm group-hover:scale-105 transition-transform text-white">
-          <i data-lucide="flower-2" class="w-5 h-5 text-amber-300"></i>
-        </div>
-        <div>
+      <!-- Brand Logo & Emblem (Official uploaded Shaham Flower round emblem) -->
+      <a href="#hero" class="flex items-center gap-3 shrink-0 group">
+        <img 
+          src="assets/images/shaham_logo.png" 
+          alt="زهرة الشهم - Shaham Flower" 
+          class="w-11 h-11 sm:w-13 sm:h-13 rounded-full object-contain bg-white p-0.5 shadow-sm border border-stone-200 group-hover:scale-105 transition-transform shrink-0"
+        />
+        <div class="shrink-0 flex flex-col justify-center">
           <span class="font-luxury font-bold text-base sm:text-xl tracking-wider text-[#13251B] block leading-tight">
             SHAHAM FLOWERS
           </span>
@@ -131,38 +132,38 @@
         </div>
       </a>
 
-      <!-- Center Navigation Links -->
-      <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold text-stone-700">
-        <a href="#bloom-assembly-story" class="hover:text-[#1B4332] transition-colors flex items-center gap-1.5" data-en="The Bloom Journey" data-ar="رحلة الباقة الملكية">
+      <!-- Center Navigation Links (Hidden on < xl to completely prevent collision with logo) -->
+      <nav class="hidden xl:flex items-center gap-6 2xl:gap-8 text-sm font-semibold text-stone-700 shrink-0">
+        <a href="#bloom-assembly-story" class="hover:text-[#1B4332] transition-colors flex items-center gap-1.5 whitespace-nowrap">
           <span class="text-xs text-[#B89345]">01</span>
-          <span data-en="The Bloom Journey" data-ar="رحلة الباقة الملكية">رحلة الباقة الملكية</span>
+          <span data-en="The Journey" data-ar="رحلة الباقة">رحلة الباقة</span>
         </a>
-        <a href="#signature-bento" class="hover:text-[#1B4332] transition-colors flex items-center gap-1.5" data-en="Royal Collection" data-ar="التشكيلة الملكية">
+        <a href="#signature-bento" class="hover:text-[#1B4332] transition-colors flex items-center gap-1.5 whitespace-nowrap">
           <span class="text-xs text-[#B89345]">02</span>
           <span data-en="Royal Collection" data-ar="التشكيلة الملكية">التشكيلة الملكية</span>
         </a>
-        <a href="#custom-atelier" class="hover:text-[#1B4332] transition-colors flex items-center gap-1.5" data-en="Custom Combo Atelier" data-ar="صمم باقتك وهديتك">
+        <a href="#custom-atelier" class="hover:text-[#1B4332] transition-colors flex items-center gap-1.5 whitespace-nowrap">
           <span class="text-xs text-[#B89345]">03</span>
-          <span data-en="Custom Combo Atelier" data-ar="صمم باقتك وهديتك">صمم باقتك وهديتك</span>
+          <span data-en="Custom Atelier" data-ar="صمم هديتك">صمم هديتك</span>
         </a>
-        <a href="#catalog" class="hover:text-[#1B4332] transition-colors flex items-center gap-1.5" data-en="Catalog" data-ar="الكتالوج والتنسيقات">
+        <a href="#catalog" class="hover:text-[#1B4332] transition-colors flex items-center gap-1.5 whitespace-nowrap">
           <span class="text-xs text-[#B89345]">04</span>
-          <span data-en="Catalog" data-ar="الكتالوج والتنسيقات">الكتالوج والتنسيقات</span>
+          <span data-en="Catalog" data-ar="الكتالوج">الكتالوج</span>
         </a>
-        <a href="#location" class="hover:text-[#1B4332] transition-colors flex items-center gap-1.5" data-en="Location & Hours" data-ar="الفرع وموقعنا">
+        <a href="#location" class="hover:text-[#1B4332] transition-colors flex items-center gap-1.5 whitespace-nowrap">
           <span class="text-xs text-[#B89345]">05</span>
-          <span data-en="Location & Hours" data-ar="الفرع وموقعنا">الفرع وموقعنا</span>
+          <span data-en="Boutique & Hours" data-ar="الفرع وموقعنا">الفرع وموقعنا</span>
         </a>
       </nav>
 
-      <!-- Right Action Items -->
+      <!-- Right Action Items (shrink-0) -->
       <div class="flex items-center gap-2 sm:gap-3 shrink-0">
-        <!-- Instagram Link -->
+        <!-- Instagram Link (Only on 2xl screens to avoid crowding) -->
         <a 
           href="https://www.instagram.com/shaham_flowers/" 
           target="_blank" 
           rel="noopener noreferrer"
-          class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-stone-100 hover:bg-pink-50 border border-stone-200 text-xs font-semibold text-stone-700 hover:text-pink-600 transition-all">
+          class="hidden 2xl:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-stone-100 hover:bg-pink-50 border border-stone-200 text-xs font-semibold text-stone-700 hover:text-pink-600 transition-all shrink-0">
           <i data-lucide="instagram" class="w-3.5 h-3.5 text-pink-600"></i>
           <span>@shaham_flowers</span>
         </a>
@@ -172,57 +173,102 @@
           href="https://wa.me/96899791925?text=Hello%20Shaham%20Flowers%2C%20I%20would%20like%20to%20order%20flowers" 
           target="_blank" 
           rel="noopener noreferrer"
-          class="btn-whatsapp px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-sm">
+          class="btn-whatsapp px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-sm shrink-0 whitespace-nowrap">
           <i data-lucide="message-circle" class="w-4 h-4"></i>
           <span class="hidden sm:inline" data-en="WhatsApp (9979 1925)" data-ar="واتساب: 9979 1925">واتساب: 9979 1925</span>
           <span class="sm:hidden font-mono">9979 1925</span>
         </a>
+
+        <!-- Mobile / Tablet Hamburger Toggle Button (xl:hidden) -->
+        <button 
+          type="button" 
+          id="mobile-nav-toggle-btn"
+          aria-label="Toggle Mobile Menu"
+          class="xl:hidden w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-stone-300 bg-white hover:border-[#1B4332] text-stone-800 flex items-center justify-center transition-colors cursor-pointer shrink-0">
+          <i data-lucide="menu" class="w-5 h-5 text-[#1B4332]"></i>
+        </button>
       </div>
 
+    </div>
+
+    <!-- Mobile Slide-Down Drawer for < xl screens -->
+    <div id="mobile-nav-drawer" class="hidden xl:hidden bg-white/98 backdrop-blur-xl border-b border-stone-200 shadow-xl px-5 py-5 transition-all">
+      <nav class="flex flex-col gap-3 text-sm font-semibold text-stone-800">
+        <a href="#bloom-assembly-story" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-stone-50 flex items-center justify-between" data-en="01 • The Journey" data-ar="01 • رحلة الباقة الملكية">
+          <span>01 • رحلة الباقة الملكية</span>
+          <i data-lucide="chevron-left" class="w-4 h-4 text-stone-400"></i>
+        </a>
+        <a href="#signature-bento" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-stone-50 flex items-center justify-between" data-en="02 • Royal Collection" data-ar="02 • التشكيلة الملكية">
+          <span>02 • التشكيلة الملكية</span>
+          <i data-lucide="chevron-left" class="w-4 h-4 text-stone-400"></i>
+        </a>
+        <a href="#custom-atelier" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-stone-50 flex items-center justify-between" data-en="03 • Custom Atelier" data-ar="03 • صمم باقتك وهديتك">
+          <span>03 • صمم باقتك وهديتك</span>
+          <i data-lucide="chevron-left" class="w-4 h-4 text-stone-400"></i>
+        </a>
+        <a href="#catalog" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-stone-50 flex items-center justify-between" data-en="04 • Catalog" data-ar="04 • الكتالوج والتنسيقات">
+          <span>04 • الكتالوج والتنسيقات</span>
+          <i data-lucide="chevron-left" class="w-4 h-4 text-stone-400"></i>
+        </a>
+        <a href="#location" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-stone-50 flex items-center justify-between" data-en="05 • Location & Hours" data-ar="05 • الفرع ومواعيد العمل">
+          <span>05 • الفرع ومواعيد العمل</span>
+          <i data-lucide="chevron-left" class="w-4 h-4 text-stone-400"></i>
+        </a>
+      </nav>
+      <div class="mt-4 pt-3 border-t border-stone-200 flex items-center justify-between">
+        <a href="https://www.instagram.com/shaham_flowers/" target="_blank" rel="noopener noreferrer" class="text-xs text-pink-600 font-semibold flex items-center gap-1.5">
+          <i data-lucide="instagram" class="w-4 h-4"></i>
+          <span>@shaham_flowers</span>
+        </a>
+        <span class="text-xs text-stone-500 font-mono">العلاية، إبراء</span>
+      </div>
     </div>
   </header>
 
   <main class="pt-24 sm:pt-28">
 
-    <!-- HERO SECTION: SUNLIT FLORIST ATELIER AMBIANCE -->
-    <section id="hero" class="relative min-h-[90vh] flex items-center justify-center py-16 sm:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <!-- HERO SECTION: CINEMATIC FLORIST ATELIER VIDEO WITH DEEP EMERALD-BLACK VIGNETTE OVERLAY -->
+    <section id="hero" class="relative min-h-[92vh] flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-[#020D08]">
       
-      <!-- Video Background (Storyblocks Florist Atelier Reference with Warm Light Scrim) -->
+      <!-- Looping HTML5 Video Background: Hands arranging floral bouquet & gift box -->
       <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <video 
           autoplay 
           muted 
           loop 
           playsinline 
-          class="w-full h-full object-cover opacity-20 filter saturate-85 scale-105"
+          preload="auto"
+          class="w-full h-full object-cover filter saturate-110 contrast-105 scale-105"
           poster="assets/images/s203_standard_hand_bouquet.jpg">
           <source src="https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-woman-arranging-a-bouquet-of-flowers-42289-large.mp4" type="video/mp4">
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-florist-arranging-a-flower-arrangement-42290-large.mp4" type="video/mp4">
         </video>
-        <!-- Warm Light Porcelain Overlays -->
-        <div class="absolute inset-0 bg-gradient-to-t from-[#FAF8F5] via-[#FAF8F5]/85 to-[#FAF8F5]/70"></div>
+
+        <!-- Deep Emerald-Black Vignette Overlay Layers (Cinematic Depth & Razor-Sharp Contrast) -->
+        <div class="absolute inset-0 bg-[#020D08]/75 mix-blend-multiply pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#020D08] via-[#041910]/70 to-[#020D08]/85 pointer-events-none"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_15%,rgba(2,13,8,0.92)_80%)] pointer-events-none"></div>
       </div>
 
       <div class="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center">
         
         <!-- Royal Boutique Badge -->
-        <div class="hero-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-stone-200 text-[#1B4332] text-xs font-bold mb-6 shadow-sm">
-          <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
-          <i data-lucide="award" class="w-3.5 h-3.5 text-[#B89345]"></i>
+        <div class="hero-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 text-xs font-semibold mb-6 backdrop-blur-md shadow-lg">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <i data-lucide="award" class="w-3.5 h-3.5 text-amber-300"></i>
           <span data-en="HAUTE FLORAL ATELIER • ALAYA, IBRA • ASH SHARQIYAH NORTH" data-ar="أتيليه الزهور الملكية • العلاية، إبراء • محافظة شمال الشرقية">
             أتيليه الزهور الملكية • العلاية، إبراء • محافظة شمال الشرقية
           </span>
         </div>
 
-        <!-- Master Headline (Refined Anti-AI Typography) -->
-        <h1 class="hero-headline font-luxury text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#13251B] leading-tight">
-          <span data-en="Artisan Blooms &" data-ar="سحر الورد الطبيعي و">سحر الورد الطبيعي و</span>
-          <span class="text-[#1B4332] block mt-2" data-en="Bespoke Chocolate Gift Combos" data-ar="فخامة هدايا الورد والشوكولاتة">
-            فخامة هدايا الورد والشوكولاتة
-          </span>
+        <!-- Master Headline (Cormorant Garamond Serif Typography) -->
+        <h1 class="hero-headline font-luxury text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight text-white leading-[1.08] max-w-4xl">
+          <span class="block italic font-normal text-stone-200" data-en="Artisan Blooms &" data-ar="سحر الورد الطبيعي و">سحر الورد الطبيعي و</span>
+          <span class="text-amber-200 block mt-1 tracking-normal font-bold" data-en="Bespoke Gift Boxes" data-ar="فخامة هدايا الورد والشوكولاتة">فخامة هدايا الورد والشوكولاتة</span>
         </h1>
 
         <!-- Sub-headline -->
-        <p class="hero-sub mt-5 sm:mt-6 text-sm sm:text-lg text-[#4A5B50] max-w-2xl leading-relaxed font-normal" data-en="From delicate single stems (.700Bz) to grand custom hand bouquets and luxury Belgian chocolate keepsake boxes. Handcrafted by master florists in Alaya, Ibra with express delivery across the whole North Sharqiyah governorate." data-ar="من الوردة الفردية الأنيقة (700 بيسة) إلى أضخم باقات الكوتور الملكية وبوكسات الشوكولاتة البلجيكية وصواني الهدايا المصممة على ذوقك الخاص في متجرنا بالعلاية، إبراء مع خدمة التوصيل السريع لكافة ولايات شمال الشرقية.">
+        <p class="hero-sub mt-5 sm:mt-6 text-sm sm:text-lg text-stone-200/90 max-w-2xl leading-relaxed font-light" data-en="From delicate single stems (.700Bz) to grand custom hand bouquets and luxury Belgian chocolate keepsake boxes. Handcrafted by master florists in Alaya, Ibra with express delivery across the whole North Sharqiyah governorate." data-ar="من الوردة الفردية الأنيقة (700 بيسة) إلى أضخم باقات الكوتور الملكية وبوكسات الشوكولاتة البلجيكية وصواني الهدايا المصممة على ذوقك الخاص في متجرنا بالعلاية، إبراء مع خدمة التوصيل السريع لكافة ولايات شمال الشرقية.">
           من الوردة الفردية الأنيقة (700 بيسة) إلى أضخم باقات الكوتور الملكية وبوكسات الشوكولاتة البلجيكية وصواني الهدايا المصممة على ذوقك الخاص في متجرنا بالعلاية، إبراء مع خدمة التوصيل السريع لكافة ولايات شمال الشرقية.
         </p>
 
@@ -231,16 +277,16 @@
           <!-- Primary: Scroll Story -->
           <a 
             href="#bloom-assembly-story" 
-            class="btn-forest px-7 py-3.5 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-md w-full sm:w-auto">
-            <i data-lucide="sparkles" class="w-4 h-4 text-amber-300"></i>
+            class="btn-brass px-7 py-3.5 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-lg w-full sm:w-auto">
+            <i data-lucide="sparkles" class="w-4 h-4 text-white"></i>
             <span data-en="Experience The Bloom Journey" data-ar="عِش رحلة تشكيل الباقة">عِش رحلة تشكيل الباقة</span>
           </a>
 
           <!-- Secondary: Custom Combo Atelier -->
           <a 
             href="#custom-atelier" 
-            class="px-7 py-3.5 rounded-xl text-xs sm:text-sm font-bold bg-white hover:bg-stone-50 text-[#13251B] border border-stone-300 flex items-center justify-center gap-2 shadow-sm transition-all w-full sm:w-auto">
-            <i data-lucide="gift" class="w-4 h-4 text-[#B89345]"></i>
+            class="px-7 py-3.5 rounded-xl text-xs sm:text-sm font-bold bg-[#041B12]/80 hover:bg-[#062619] text-amber-200 border border-emerald-500/40 flex items-center justify-center gap-2 shadow-lg backdrop-blur-md transition-all w-full sm:w-auto">
+            <i data-lucide="gift" class="w-4 h-4 text-amber-300"></i>
             <span data-en="Customize Bouquet & Chocolates" data-ar="صمم باقتك مع الشوكولاتة">صمم باقتك مع الشوكولاتة</span>
           </a>
 
@@ -248,42 +294,42 @@
           <a 
             href="https://wa.me/96899791925?text=Hello%20Shaham%20Flowers%2C%20I%20would%20like%20to%20order" 
             target="_blank" 
-            rel="noopener noreferrer"
-            class="btn-whatsapp px-7 py-3.5 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-md w-full sm:w-auto">
+            rel="noopener noreferrer" 
+            class="btn-whatsapp px-7 py-3.5 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-lg w-full sm:w-auto">
             <i data-lucide="message-circle" class="w-4 h-4"></i>
             <span data-en="WhatsApp (9979 1925)" data-ar="واتساب: 9979 1925">واتساب: 9979 1925</span>
           </a>
         </div>
 
-        <!-- Official Quality Perks -->
-        <div class="hero-perks mt-12 sm:mt-14 pt-8 border-t border-stone-200/80 grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-6 w-full max-w-3xl">
-          <div class="flex items-center gap-3 p-3.5 rounded-xl bg-white border border-stone-200/90 shadow-2xs">
-            <div class="w-9 h-9 rounded-lg bg-emerald-50 border border-emerald-200/80 flex items-center justify-center text-[#1B4332] shrink-0">
+        <!-- Official Quality Perks (Frosted Deep Emerald Glass) -->
+        <div class="hero-perks mt-12 sm:mt-14 pt-8 border-t border-emerald-500/25 grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-6 w-full max-w-3xl">
+          <div class="flex items-center gap-3 p-3.5 rounded-xl bg-[#041910]/75 border border-emerald-500/30 backdrop-blur-md">
+            <div class="w-9 h-9 rounded-lg bg-emerald-900/60 border border-emerald-500/40 flex items-center justify-center text-emerald-300 shrink-0">
               <i data-lucide="flower-2" class="w-5 h-5"></i>
             </div>
             <div class="text-right rtl:text-right ltr:text-left">
-              <h4 class="font-bold text-xs text-[#13251B]" data-en="Dutch & Ecuadorian Grade A" data-ar="ورود هولندية وإكوادورية قطفة أولى">ورود هولندية وإكوادورية قطفة أولى</h4>
-              <p class="text-[11px] text-[#55645A]" data-en="Fresh daily arrivals" data-ar="تصلنا يومياً بأعلى نضارة">تصلنا يومياً بأعلى نضارة</p>
+              <h4 class="font-bold text-xs text-stone-100" data-en="Dutch & Ecuadorian Grade A" data-ar="ورود هولندية وإكوادورية قطفة أولى">ورود هولندية وإكوادورية قطفة أولى</h4>
+              <p class="text-[11px] text-emerald-300/80" data-en="Fresh daily arrivals" data-ar="تصلنا يومياً بأعلى نضارة">تصلنا يومياً بأعلى نضارة</p>
             </div>
           </div>
 
-          <div class="flex items-center gap-3 p-3.5 rounded-xl bg-white border border-stone-200/90 shadow-2xs">
-            <div class="w-9 h-9 rounded-lg bg-amber-50 border border-amber-200/80 flex items-center justify-center text-[#B89345] shrink-0">
+          <div class="flex items-center gap-3 p-3.5 rounded-xl bg-[#041910]/75 border border-emerald-500/30 backdrop-blur-md">
+            <div class="w-9 h-9 rounded-lg bg-amber-950/60 border border-amber-500/40 flex items-center justify-center text-amber-300 shrink-0">
               <i data-lucide="gift" class="w-5 h-5"></i>
             </div>
             <div class="text-right rtl:text-right ltr:text-left">
-              <h4 class="font-bold text-xs text-[#13251B]" data-en="Custom Combos with Sweets" data-ar="كومبو الورد مع الشوكولاتة">كومبو الورد مع الشوكولاتة</h4>
-              <p class="text-[11px] text-[#55645A]" data-en="Belgian truffles & Patchi" data-ar="شوكولاتة بلجيكية وأكريليك فاخر">شوكولاتة بلجيكية وأكريليك فاخر</p>
+              <h4 class="font-bold text-xs text-stone-100" data-en="Custom Combos with Sweets" data-ar="كومبو الورد مع الشوكولاتة">كومبو الورد مع الشوكولاتة</h4>
+              <p class="text-[11px] text-amber-300/80" data-en="Belgian truffles & Patchi" data-ar="شوكولاتة بلجيكية وأكريليك فاخر">شوكولاتة بلجيكية وأكريليك فاخر</p>
             </div>
           </div>
 
-          <div class="flex items-center gap-3 p-3.5 rounded-xl bg-white border border-stone-200/90 shadow-2xs">
-            <div class="w-9 h-9 rounded-lg bg-rose-50 border border-rose-200/80 flex items-center justify-center text-[#9F1239] shrink-0">
+          <div class="flex items-center gap-3 p-3.5 rounded-xl bg-[#041910]/75 border border-emerald-500/30 backdrop-blur-md">
+            <div class="w-9 h-9 rounded-lg bg-rose-950/60 border border-rose-500/40 flex items-center justify-center text-rose-300 shrink-0">
               <i data-lucide="truck" class="w-5 h-5"></i>
             </div>
             <div class="text-right rtl:text-right ltr:text-left">
-              <h4 class="font-bold text-xs text-[#13251B]" data-en="North Sharqiyah Express" data-ar="توصيل سريع لكافة المحافظة">توصيل سريع لكافة المحافظة</h4>
-              <p class="text-[11px] text-[#55645A]" data-en="Serving Ibra, Bidiyah & more" data-ar="إبراء، بدية، المضيبي وباقي الولايات">إبراء، بدية، المضيبي وباقي الولايات</p>
+              <h4 class="font-bold text-xs text-stone-100" data-en="North Sharqiyah Express" data-ar="توصيل سريع لكافة المحافظة">توصيل سريع لكافة المحافظة</h4>
+              <p class="text-[11px] text-rose-300/80" data-en="Serving Ibra, Bidiyah & more" data-ar="إبراء، بدية، المضيبي وباقي الولايات">إبراء، بدية، المضيبي وباقي الولايات</p>
             </div>
           </div>
         </div>
@@ -878,9 +924,9 @@
           <div class="flex items-center gap-4 text-center sm:text-right rtl:text-right ltr:text-left">
             <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full p-1 bg-gradient-to-tr from-amber-400 via-rose-500 to-purple-600 shadow-sm shrink-0">
               <img 
-                src="assets/images/s203_standard_hand_bouquet.jpg" 
+                src="assets/images/shaham_logo.png" 
                 alt="Shaham Flowers Instagram" 
-                class="w-full h-full object-cover rounded-full"
+                class="w-full h-full object-contain rounded-full bg-white p-0.5"
               />
             </div>
             <div>
@@ -1080,26 +1126,33 @@
   <footer class="mt-20 border-t border-stone-200 bg-[#F1ECE1] py-12 px-4 sm:px-6 lg:px-8 text-[#2C382F]">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-right rtl:md:text-right ltr:md:text-left">
       
-      <div>
-        <span class="font-luxury font-bold text-xl text-[#13251B] block">
-          SHAHAM FLOWERS • زهور الشهم
-        </span>
-        <p class="text-xs text-[#55645A] mt-1 font-medium">
-          العلاية، ولاية إبراء • محافظة شمال الشرقية، سلطنة عُمان
-        </p>
-        <p class="text-[11px] text-[#1B4332] mt-0.5 font-bold">
-          باقات الورد الطبيعي وتنسيقات كومبو الشوكولاتة الفاخرة ومسكات العرائس
-        </p>
-        <div class="mt-2 flex flex-wrap items-center justify-center md:justify-start gap-3 text-xs">
-          <a href="tel:+96899791925" class="text-[#1B4332] hover:underline font-mono font-bold flex items-center gap-1">
-            <i data-lucide="phone" class="w-3.5 h-3.5"></i>
-            <span>9979 1925</span>
-          </a>
-          <span class="text-stone-400">•</span>
-          <a href="mailto:info@shahamflowers.com" class="text-stone-600 hover:underline font-mono flex items-center gap-1">
-            <i data-lucide="mail" class="w-3.5 h-3.5 text-[#1B4332]"></i>
-            <span>info@shahamflowers.com</span>
-          </a>
+      <div class="flex items-center gap-4">
+        <img 
+          src="assets/images/shaham_logo.png" 
+          alt="Shaham Flower Logo" 
+          class="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-contain bg-white p-0.5 shadow-sm border border-stone-200 shrink-0"
+        />
+        <div>
+          <span class="font-luxury font-bold text-xl text-[#13251B] block">
+            SHAHAM FLOWERS • زهور الشهم
+          </span>
+          <p class="text-xs text-[#55645A] mt-1 font-medium">
+            العلاية، ولاية إبراء • محافظة شمال الشرقية، سلطنة عُمان
+          </p>
+          <p class="text-[11px] text-[#1B4332] mt-0.5 font-bold">
+            باقات الورد الطبيعي وتنسيقات كومبو الشوكولاتة الفاخرة ومسكات العرائس
+          </p>
+          <div class="mt-2 flex flex-wrap items-center justify-center md:justify-start gap-3 text-xs">
+            <a href="tel:+96899791925" class="text-[#1B4332] hover:underline font-mono font-bold flex items-center gap-1">
+              <i data-lucide="phone" class="w-3.5 h-3.5"></i>
+              <span>9979 1925</span>
+            </a>
+            <span class="text-stone-400">•</span>
+            <a href="mailto:info@shahamflowers.com" class="text-stone-600 hover:underline font-mono flex items-center gap-1">
+              <i data-lucide="mail" class="w-3.5 h-3.5 text-[#1B4332]"></i>
+              <span>info@shahamflowers.com</span>
+            </a>
+          </div>
         </div>
       </div>
 

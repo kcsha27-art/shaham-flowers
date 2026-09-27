@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderCatalog();
   initModal();
   initFab();
+  initMobileNav();
   initLangToggle();
   initCustomOrderForm();
 });
@@ -360,3 +361,27 @@ function toggleLanguage() {
 function initCustomOrderForm() {
   // Reserved for additional form validation if needed
 }
+
+// 8. Mobile Navigation Drawer Controller
+function initMobileNav() {
+  const toggleBtn = document.getElementById('mobile-nav-toggle-btn');
+  const drawer = document.getElementById('mobile-nav-drawer');
+  if (!toggleBtn || !drawer) return;
+
+  toggleBtn.addEventListener('click', () => {
+    drawer.classList.toggle('hidden');
+    if (!drawer.classList.contains('hidden') && window.gsap) {
+      gsap.fromTo(drawer,
+        { opacity: 0, y: -10 },
+        { opacity: 1, y: 0, duration: 0.25, ease: 'power2.out' }
+      );
+    }
+  });
+
+  drawer.querySelectorAll('.mobile-nav-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      drawer.classList.add('hidden');
+    });
+  });
+}
+
