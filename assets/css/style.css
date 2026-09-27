@@ -8,16 +8,16 @@
 
 :root {
   --color-gold: #D4AF37;
-  --color-gold-light: #FBF0B9;
+  --color-gold-light: #F7E7B4;
   --color-gold-dark: #8C6F12;
-  --color-emerald-deep: #05160E;
+  --color-emerald-deep: #06130B;
   --color-emerald-glow: #10B981;
-  --color-rose-velvet: #E11D48;
+  --color-rose-velvet: #BE123C;
   --color-rose-blush: #FDA4AF;
   --color-bg-noir: #060907;
   --color-card-noir: #0B110D;
   --color-border-subtle: rgba(212, 175, 55, 0.16);
-  --color-border-glow: rgba(212, 175, 55, 0.5);
+  --color-border-glow: rgba(212, 175, 55, 0.45);
   --mouse-x: 50%;
   --mouse-y: 50%;
 }
