@@ -238,18 +238,21 @@
     <!-- HERO SECTION: FULL-BLEED CINEMATIC FLORIST VIDEO (min-h-[100dvh] w-full flex flex-col justify-between) -->
     <section id="hero" class="relative min-h-[100dvh] w-full flex flex-col justify-between overflow-hidden bg-[#06110D] pt-28 pb-8 sm:pt-32 sm:pb-10 px-4 sm:px-6 lg:px-8">
       
-      <!-- Looping HTML5 Video Background: Full-Bleed -->
+      <!-- Looping HTML5 Video Background: Real Floral Atelier (Hands Arranging Roses) -->
       <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
         <video 
           autoplay 
-          muted 
           loop 
+          muted 
           playsinline 
           preload="auto"
-          class="w-full h-full object-cover object-center min-w-full min-h-full filter saturate-[1.15] contrast-[1.06]">
+          src="videos/florist-arranging-roses.mp4"
+          class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none filter saturate-[1.15] contrast-[1.06]">
+          <source src="videos/florist-arranging-roses.mp4" type="video/mp4">
+          <source src="assets/videos/florist-arranging-roses.mp4" type="video/mp4">
           <source src="assets/videos/hero_florist.mp4" type="video/mp4">
-          <source src="assets/videos/hero_florist_alt.mp4" type="video/mp4">
-          <source src="https://assets.mixkit.co/videos/42289/42289-720.mp4" type="video/mp4">
+          <source src="https://assets.mixkit.co/videos/41662/41662-720.mp4" type="video/mp4">
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-florist-arranging-a-bouquet-41662-large.mp4" type="video/mp4">
         </video>
 
         <!-- Sophisticated Cinematic Vignette (Warm florals shine on right, deep contrast on left/center) -->
