@@ -1,6 +1,6 @@
 /**
  * Shaham Flowers (زهور الشهم - @shaham_flowers)
- * Core Application Controller: Catalog rendering, Category Filters,
+ * Core Application Controller (Light Theme): Catalog rendering, Category Filters,
  * Bilingual switcher, Modal Drawer, and Structured WhatsApp URL Engine.
  */
 
@@ -35,8 +35,8 @@ function renderCategories() {
     const isActive = cat.id === currentCategory;
     const name = isAr ? cat.nameAr : cat.nameEn;
     const activeClass = isActive
-      ? 'bg-amber-400 text-stone-950 font-bold shadow-lg shadow-amber-400/20 border-amber-400'
-      : 'bg-stone-900/80 text-stone-300 hover:text-amber-300 hover:border-amber-400/40 border-stone-800';
+      ? 'bg-[#1B4332] text-white font-bold shadow-sm border-[#1B4332]'
+      : 'bg-white text-stone-700 hover:text-[#1B4332] hover:border-stone-400 border-stone-200 shadow-2xs';
 
     return `
       <button 
@@ -88,51 +88,51 @@ function renderCatalog() {
     const priceDisplay = isAr ? (product.priceDisplayAr || `${product.priceOmr} ر.ع`) : (product.priceDisplayEn || `${product.priceOmr} OMR`);
 
     return `
-      <div class="product-card spotlight-card rounded-2xl overflow-hidden flex flex-col group will-change-transform" data-id="${product.id}">
+      <div class="product-card spotlight-card rounded-2xl overflow-hidden flex flex-col group will-change-transform bg-white border border-stone-200/90 shadow-sm hover:shadow-xl transition-all duration-300" data-id="${product.id}">
         <!-- Image Container -->
-        <div class="relative overflow-hidden aspect-[4/3] bg-stone-950">
+        <div class="relative overflow-hidden aspect-[4/3] bg-stone-100">
           <img 
             src="${product.imageUrl}" 
             alt="${title}"
             loading="lazy"
             class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           />
-          <div class="absolute inset-0 bg-gradient-to-t from-stone-950 via-transparent to-transparent opacity-75"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-stone-900/40 via-transparent to-transparent opacity-60"></div>
 
           <!-- Official/Tag Badge -->
-          <span class="absolute top-3 ${isAr ? 'right-3' : 'left-3'} px-2.5 py-1 rounded-full text-[11px] font-bold tracking-wide uppercase ${product.isOfficial ? 'bg-amber-400 text-stone-950 shadow-md' : 'bg-emerald-950/90 text-emerald-300 border border-emerald-500/30'} backdrop-blur-md">
+          <span class="absolute top-3 ${isAr ? 'right-3' : 'left-3'} px-2.5 py-1 rounded-full text-[11px] font-bold tracking-wide uppercase ${product.isOfficial ? 'bg-[#1B4332] text-white shadow-sm' : 'bg-emerald-50 text-emerald-900 border border-emerald-200 shadow-2xs'}">
             ${tag}
           </span>
 
           <!-- Item Code Pill -->
-          <span class="absolute top-3 ${isAr ? 'left-3' : 'right-3'} px-2.5 py-1 rounded-md text-[11px] font-mono text-stone-300 bg-stone-900/85 border border-stone-700/60 backdrop-blur-md">
+          <span class="absolute top-3 ${isAr ? 'left-3' : 'right-3'} px-2.5 py-1 rounded-md text-[11px] font-mono text-stone-700 bg-white/95 border border-stone-200 shadow-sm">
             ${product.code}
           </span>
 
           <!-- Price Badge -->
-          <div class="absolute bottom-3 ${isAr ? 'right-3' : 'left-3'} flex items-baseline gap-1 bg-stone-900/90 border border-amber-400/40 px-3 py-1 rounded-lg backdrop-blur-md shadow-lg">
-            <span class="text-amber-400 font-bold text-sm sm:text-base">${priceDisplay}</span>
+          <div class="absolute bottom-3 ${isAr ? 'right-3' : 'left-3'} flex items-baseline gap-1 bg-white/95 border border-stone-200 px-3 py-1 rounded-lg shadow-sm">
+            <span class="text-[#1B4332] font-bold text-sm sm:text-base font-mono">${priceDisplay}</span>
           </div>
         </div>
 
         <!-- Content Area -->
         <div class="p-4 sm:p-5 flex-1 flex flex-col justify-between">
           <div>
-            <h3 class="font-bold text-base sm:text-lg text-stone-100 group-hover:text-amber-300 transition-colors line-clamp-1">
+            <h3 class="font-bold text-base sm:text-lg text-stone-900 group-hover:text-[#1B4332] transition-colors line-clamp-1">
               ${title}
             </h3>
-            <p class="text-stone-400 text-xs mt-1.5 line-clamp-2 leading-relaxed">
+            <p class="text-stone-600 text-xs mt-1.5 line-clamp-2 leading-relaxed">
               ${desc}
             </p>
           </div>
 
           <!-- CTAs -->
-          <div class="mt-4 pt-3.5 border-t border-stone-800/80 flex flex-col gap-2">
+          <div class="mt-4 pt-3.5 border-t border-stone-100 flex flex-col gap-2">
             <a 
               href="${waUrl}" 
               target="_blank" 
               rel="noopener noreferrer"
-              class="btn-whatsapp w-full py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 text-xs sm:text-sm text-center shadow-md">
+              class="btn-whatsapp w-full py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 text-xs sm:text-sm text-center shadow-sm">
               <i data-lucide="message-circle" class="w-4 h-4"></i>
               <span>${orderBtnText}</span>
             </a>
@@ -140,8 +140,8 @@ function renderCatalog() {
             <button 
               type="button"
               onclick="openProductModal('${product.id}')"
-              class="w-full py-2 px-4 rounded-xl border border-stone-800 bg-stone-900/50 hover:bg-stone-800/80 text-stone-300 hover:text-amber-300 text-xs font-medium transition-all flex items-center justify-center gap-1.5 cursor-pointer">
-              <i data-lucide="eye" class="w-3.5 h-3.5"></i>
+              class="w-full py-2 px-4 rounded-xl border border-stone-300 bg-stone-50 hover:bg-stone-100 text-stone-800 text-xs font-semibold transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+              <i data-lucide="eye" class="w-3.5 h-3.5 text-stone-600"></i>
               <span>${detailsBtnText}</span>
             </button>
           </div>
@@ -221,186 +221,142 @@ function closeModal() {
   if (window.gsap) {
     gsap.to('#modal-content', {
       opacity: 0,
-      scale: 0.95,
+      scale: 0.94,
+      y: 15,
       duration: 0.2,
+      ease: 'power2.in',
       onComplete: () => {
-        modal.classList.add('hidden');
         modal.classList.remove('flex');
-        document.body.style.overflow = 'auto';
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
       }
     });
   } else {
-    modal.classList.add('hidden');
     modal.classList.remove('flex');
-    document.body.style.overflow = 'auto';
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
   }
 }
 
-// 5. WhatsApp Formatter Helpers
-function getWhatsAppOrderUrl(product, isAr) {
-  const phone = (APP_CONFIG.whatsappNumber || "+96899791925").replace(/[^0-9]/g, "");
-  const price = isAr ? (product.priceDisplayAr || `${product.priceOmr} ر.ع`) : (product.priceDisplayEn || `${product.priceOmr} OMR`);
-  const title = isAr ? product.titleAr : product.titleEn;
-
-  let msg = "";
-  if (isAr) {
-    msg = `🌸 *طلب باقة من زهور الشهم — سلطنة عُمان* 🌸\n`
-      + `🌹 *اسم التنسيق:* ${title}\n`
-      + `🏷️ *رمز المنتج:* ${product.code}\n`
-      + `💰 *السعر:* ${price}\n`
-      + `📍 *الموقع:* ${APP_CONFIG.branchLocationAr}\n`
-      + `-----------------------------------\n`
-      + `أرجو تأكيد توفر التنسيق وإمكانية التوصيل في محافظة شمال الشرقية. شكراً لكم!`;
-  } else {
-    msg = `🌸 *Order Request — Shaham Flowers (Oman)* 🌸\n`
-      + `🌹 *Arrangement:* ${title}\n`
-      + `🏷️ *Item Code:* ${product.code}\n`
-      + `💰 *Price:* ${price}\n`
-      + `📍 *Branch:* ${APP_CONFIG.branchLocation}\n`
-      + `-----------------------------------\n`
-      + `Please confirm availability and delivery within North Sharqiyah. Thank you!`;
-  }
-
-  return `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-}
-
-function getWhatsAppCustomUrl(details, isAr) {
-  const phone = (APP_CONFIG.whatsappNumber || "+96899791925").replace(/[^0-9]/g, "");
-  let msg = "";
-
-  if (isAr) {
-    msg = `🌸 *طلب تصميم باقة خاصة — زهور الشهم* 🌸\n`
-      + `🎉 *المناسبة:* ${details.occasion || 'غير محدد'}\n`
-      + `🎨 *درجات الألوان المفضلة:* ${details.palette || 'على ذوق المنسق'}\n`
-      + `💰 *الميزانية التقريبية:* ${details.budget || 'حسب التنسيق'}\n`
-      + `✨ *الإضافات:* ${details.addons || 'لا يوجد'}\n`
-      + `📍 *الفرع:* العلاية، ولاية إبراء (محافظة شمال الشرقية)\n`
-      + `-----------------------------------\n`
-      + `أرجو تزويدي بالخيارات المتاحة وتأكيد الطلب. شكراً لكم!`;
-  } else {
-    msg = `🌸 *Custom Floral Request — Shaham Flowers* 🌸\n`
-      + `🎉 *Occasion:* ${details.occasion || 'General'}\n`
-      + `🎨 *Color Palette:* ${details.palette || "Florist's Choice"}\n`
-      + `💰 *Budget:* ${details.budget || 'Flexible'}\n`
-      + `✨ *Special Requests:* ${details.addons || 'None'}\n`
-      + `📍 *Boutique:* Alaya, Ibra (North Sharqiyah)\n`
-      + `-----------------------------------\n`
-      + `Please share options and let me know how to proceed. Thank you!`;
-  }
-
-  return `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-}
-
-// 6. Floating Action Button (FAB) Drawer
+// 5. FAB WhatsApp Concierge Drawer
 function initFab() {
-  const fabBtn = document.getElementById('fab-toggle-btn');
-  const fabDrawer = document.getElementById('fab-drawer');
-  const closeFab = document.getElementById('fab-close-btn');
+  const toggleBtn = document.getElementById('fab-toggle-btn');
+  const drawer = document.getElementById('fab-drawer');
+  const closeBtn = document.getElementById('fab-close-btn');
+  const presetBtns = document.querySelectorAll('.fab-preset-btn');
 
-  if (!fabBtn || !fabDrawer) return;
+  if (!toggleBtn || !drawer) return;
 
-  fabBtn.addEventListener('click', () => {
-    const isHidden = fabDrawer.classList.contains('hidden');
-    if (isHidden) {
-      fabDrawer.classList.remove('hidden');
-      if (window.gsap) {
-        gsap.fromTo(fabDrawer,
-          { opacity: 0, y: 15, scale: 0.95 },
-          { opacity: 1, y: 0, scale: 1, duration: 0.25, ease: 'power2.out' }
-        );
-      }
-    } else {
-      fabDrawer.classList.add('hidden');
+  toggleBtn.addEventListener('click', () => {
+    drawer.classList.toggle('hidden');
+    if (!drawer.classList.contains('hidden') && window.gsap) {
+      gsap.fromTo(drawer,
+        { opacity: 0, y: 20, scale: 0.95 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.3, ease: 'power2.out' }
+      );
     }
   });
 
-  if (closeFab) {
-    closeFab.addEventListener('click', () => {
-      fabDrawer.classList.add('hidden');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      drawer.classList.add('hidden');
     });
   }
 
-  document.querySelectorAll('.fab-preset-btn').forEach((btn) => {
+  presetBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
-      const type = btn.getAttribute('data-preset');
+      const preset = btn.getAttribute('data-preset');
       const isAr = window.currentLang === 'ar';
       let text = '';
 
-      if (type === 'custom') {
+      if (preset === 'custom') {
         text = isAr
-          ? "مرحباً زهور الشهم، أود الاستفسار عن تفصيل باقة ورد خاصة وتغليف فاخر مع شوكولاتة من فرعكم بالعلاية، إبراء."
-          : "Hello Shaham Flowers, I would like to inquire about a custom bouquet and chocolate combo from your Alaya, Ibra branch.";
-      } else if (type === 'express_delivery') {
+          ? "مرحباً زهور الشهم، أود الاستفسار عن تفصيل باقة خاصة مع الشوكولاتة."
+          : "Hello Shaham Flowers, I would like to inquire about a custom bouquet and chocolate combo.";
+      } else if (preset === 'express_delivery') {
         text = isAr
-          ? "مرحباً زهور الشهم، هل تتوفر خدمة التوصيل السريع اليوم في ولايات محافظة شمال الشرقية؟"
-          : "Hello Shaham Flowers, is express same-day delivery available today across North Sharqiyah?";
-      } else if (type === 'wedding') {
+          ? "مرحباً، أود معرفة تفاصيل التوصيل السريع إلى ولايات شمال الشرقية اليوم."
+          : "Hello, I would like same-day express delivery details for North Sharqiyah.";
+      } else if (preset === 'wedding') {
         text = isAr
-          ? "مرحباً زهور الشهم، أود استشارة وحجز مسكة عروس وتنسيق زهور زفاف لفرع إبراء."
-          : "Hello Shaham Flowers, I would like to consult about bridal wedding bouquets at your Ibra branch.";
+          ? "السلام عليكم، أود حجز موعد استشارة لتصميم مسكة عروس ملكية في فرعكم بإبراء."
+          : "Hello, I would like a bridal bouquet consultation appointment at your Ibra boutique.";
       }
 
-      const phone = (APP_CONFIG.whatsappNumber || "+96899791925").replace(/[^0-9]/g, "");
-      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
-      fabDrawer.classList.add('hidden');
+      const encoded = encodeURIComponent(text);
+      window.open(`https://wa.me/96899791925?text=${encoded}`, '_blank', 'noopener,noreferrer');
+      drawer.classList.add('hidden');
     });
   });
 }
 
-// 7. General Custom Inquiry Form Handler
-function initCustomOrderForm() {
-  const sendBtn = document.getElementById('send-custom-order-btn');
-  if (!sendBtn) return;
+// 6. Structured WhatsApp Order URL Generator
+function getWhatsAppOrderUrl(product, isAr) {
+  const phone = '96899791925';
+  let message = '';
 
-  sendBtn.addEventListener('click', () => {
-    const occasionEl = document.getElementById('custom-occasion');
-    const paletteEl = document.getElementById('custom-palette');
-    const budgetEl = document.getElementById('custom-budget');
-    const notesEl = document.getElementById('custom-notes');
+  if (isAr) {
+    message = `🌸 *طلب جديد من موقع زهور الشهم* 🌸\n`
+      + `📦 *التنسيق:* ${product.titleAr} (${product.code})\n`
+      + `💰 *السعر المعتمد:* ${product.priceDisplayAr || product.priceOmr + ' ر.ع'}\n`
+      + `🌿 *المحتويات:* ${product.stemsAr}\n`
+      + `📍 *المتجر:* العلاية، ولاية إبراء (شمال الشرقية)\n`
+      + `-----------------------------------\n`
+      + `يرجى تأكيد توفر التنسيق وموعد التوصيل أو الاستلام. شكراً لكم!`;
+  } else {
+    message = `🌸 *New Order from Shaham Flowers Website* 🌸\n`
+      + `📦 *Item:* ${product.titleEn} (${product.code})\n`
+      + `💰 *Price:* ${product.priceDisplayEn || product.priceOmr + ' OMR'}\n`
+      + `🌿 *Stems:* ${product.stemsEn}\n`
+      + `📍 *Boutique:* Alaya, Ibra (North Sharqiyah)\n`
+      + `-----------------------------------\n`
+      + `Please confirm availability and delivery schedule. Thank you!`;
+  }
 
-    const details = {
-      occasion: occasionEl ? occasionEl.value : '',
-      palette: paletteEl ? paletteEl.value : '',
-      budget: budgetEl ? budgetEl.value : '',
-      addons: notesEl ? notesEl.value : ''
-    };
-
-    const isAr = window.currentLang === 'ar';
-    const waUrl = getWhatsAppCustomUrl(details, isAr);
-    window.open(waUrl, '_blank', 'noopener,noreferrer');
-  });
+  const encoded = encodeURIComponent(message);
+  return `https://wa.me/${phone}?text=${encoded}`;
 }
 
-// 8. Bilingual Language Switcher
+// 7. Bilingual Language Switcher (AR/EN)
 function initLangToggle() {
-  const toggleBtns = document.querySelectorAll('.lang-toggle-btn');
-  toggleBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      window.currentLang = window.currentLang === 'ar' ? 'en' : 'ar';
-      applyLanguage(window.currentLang);
-    });
+  const buttons = document.querySelectorAll('.lang-toggle-btn');
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', toggleLanguage);
   });
 }
 
-function applyLanguage(lang) {
-  const html = document.documentElement;
-  const isAr = lang === 'ar';
+function toggleLanguage() {
+  window.currentLang = window.currentLang === 'ar' ? 'en' : 'ar';
+  const isAr = window.currentLang === 'ar';
 
-  html.setAttribute('lang', lang);
-  html.setAttribute('dir', isAr ? 'rtl' : 'ltr');
-  document.body.classList.toggle('rtl', isAr);
+  // Update HTML attributes
+  document.documentElement.lang = isAr ? 'ar' : 'en';
+  document.documentElement.dir = isAr ? 'rtl' : 'ltr';
+  document.body.className = isAr ? document.body.className.replace('ltr', 'rtl') : document.body.className.replace('rtl', 'ltr');
 
-  document.querySelectorAll('[data-en]').forEach((el) => {
+  // Update text elements with data-ar and data-en
+  document.querySelectorAll('[data-ar][data-en]').forEach((el) => {
     const text = isAr ? el.getAttribute('data-ar') : el.getAttribute('data-en');
     if (text) {
-      el.textContent = text;
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.placeholder = text;
+      } else {
+        el.textContent = text;
+      }
     }
   });
 
+  // Re-render components
   renderCategories();
   renderCatalog();
 
   if (window.refreshCustomizerLanguage) {
     window.refreshCustomizerLanguage();
   }
+
+  initIcons();
+}
+
+function initCustomOrderForm() {
+  // Reserved for additional form validation if needed
 }

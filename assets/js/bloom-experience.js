@@ -1,7 +1,7 @@
 /**
  * Shaham Flowers (زهور الشهم - @shaham_flowers)
  * Luxury Motion Engine: Lenis Smooth Scrolling, GSAP ScrollTrigger,
- * Aceternity Mouse Spotlight, and the Seamless Floral Scroll Story.
+ * Tactile Mouse Spotlight, and the Seamless Floral Scroll Story (Light Palette).
  */
 
 let lenisInstance = null;
@@ -55,7 +55,7 @@ function initLenis() {
   });
 }
 
-// 2. Aceternity Mouse-Tracking Spotlight Effect
+// 2. Tactile Mouse-Tracking Spotlight Effect for Light Palette
 function initSpotlights() {
   const cards = document.querySelectorAll('.spotlight-card');
   cards.forEach((card) => {
@@ -76,9 +76,9 @@ function initHeaderMotion() {
   const header = document.querySelector('header');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 40) {
-      header.classList.add('shadow-xl', 'bg-stone-950/95');
+      header.classList.add('shadow-sm', 'bg-white/95');
     } else {
-      header.classList.remove('shadow-xl', 'bg-stone-950/95');
+      header.classList.remove('shadow-sm', 'bg-white/95');
     }
   });
 
@@ -91,15 +91,15 @@ function initHeaderMotion() {
   });
 
   gsap.from('.hero-headline', {
-    y: 40,
+    y: 35,
     opacity: 0,
-    duration: 1.2,
+    duration: 1.1,
     ease: 'power4.out',
     delay: 0.4,
   });
 
   gsap.from('.hero-sub', {
-    y: 30,
+    y: 25,
     opacity: 0,
     duration: 1,
     ease: 'power3.out',
@@ -107,7 +107,7 @@ function initHeaderMotion() {
   });
 
   gsap.from('.hero-cta-group', {
-    y: 25,
+    y: 20,
     opacity: 0,
     duration: 1,
     ease: 'power3.out',
@@ -201,11 +201,11 @@ function updateAssemblyIndicators(progress) {
 
   pills.forEach((pill, idx) => {
     if (idx === activeIndex) {
-      pill.classList.add('active', 'border-amber-400', 'text-amber-300', 'bg-amber-400/15');
-      pill.classList.remove('border-stone-800', 'text-stone-400');
+      pill.classList.add('active');
+      pill.classList.remove('text-stone-700', 'bg-white', 'border-stone-300');
     } else {
-      pill.classList.remove('active', 'border-amber-400', 'text-amber-300', 'bg-amber-400/15');
-      pill.classList.add('border-stone-800', 'text-stone-400');
+      pill.classList.remove('active');
+      pill.classList.add('text-stone-700', 'bg-white', 'border-stone-300');
     }
   });
 }

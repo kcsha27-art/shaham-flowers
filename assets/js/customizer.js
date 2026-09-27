@@ -1,6 +1,6 @@
 /**
  * Shaham Flowers (زهور الشهم - @shaham_flowers)
- * Interactive Customizer: Bouquet & Flower with Chocolates Combo Atelier
+ * Interactive Customizer: Bouquet & Flower with Chocolates Combo Atelier (Light Theme)
  * Calculates live prices in OMR and generates structured WhatsApp orders.
  */
 
@@ -38,25 +38,25 @@ function renderCustomizerBases() {
     const isSelected = base.id === customizerState.baseId;
     const name = isAr ? base.nameAr : base.nameEn;
     const activeClass = isSelected
-      ? 'border-amber-400 bg-amber-400/15 text-amber-200 shadow-md shadow-amber-400/10'
-      : 'border-stone-800 bg-stone-900/60 text-stone-300 hover:border-stone-700';
+      ? 'border-2 border-[#1B4332] bg-emerald-50/80 text-[#13251B] font-bold shadow-sm'
+      : 'border border-stone-200 bg-white text-stone-700 hover:border-stone-400 hover:bg-stone-50';
 
     return `
       <button 
         type="button" 
         data-base-id="${base.id}"
-        class="custom-base-btn p-3 sm:p-3.5 rounded-xl border text-right rtl:text-right ltr:text-left flex items-center justify-between transition-all cursor-pointer ${activeClass}">
+        class="custom-base-btn p-3 sm:p-3.5 rounded-xl text-right rtl:text-right ltr:text-left flex items-center justify-between transition-all cursor-pointer ${activeClass}">
         <div class="flex items-center gap-2.5">
-          <div class="w-8 h-8 rounded-lg bg-stone-950 flex items-center justify-center text-amber-400 border border-stone-800 shrink-0">
+          <div class="w-8 h-8 rounded-lg bg-emerald-50 text-[#1B4332] border border-emerald-200/80 flex items-center justify-center shrink-0">
             <i data-lucide="${base.icon || 'flower-2'}" class="w-4 h-4"></i>
           </div>
           <div>
-            <h4 class="text-xs sm:text-sm font-bold text-stone-100">${name}</h4>
-            <span class="text-[10px] text-stone-400">${base.basePrice > 0 ? `+${base.basePrice.toFixed(3)} ${isAr ? 'ر.ع' : 'OMR'}` : (isAr ? 'مشمول' : 'Included')}</span>
+            <h4 class="text-xs sm:text-sm font-bold text-[#13251B]">${name}</h4>
+            <span class="text-[10px] text-[#55645A]">${base.basePrice > 0 ? `+${base.basePrice.toFixed(3)} ${isAr ? 'ر.ع' : 'OMR'}` : (isAr ? 'مشمول' : 'Included')}</span>
           </div>
         </div>
-        <div class="w-4 h-4 rounded-full border ${isSelected ? 'border-amber-400 bg-amber-400 flex items-center justify-center' : 'border-stone-700'}">
-          ${isSelected ? '<span class="w-1.5 h-1.5 rounded-full bg-stone-950"></span>' : ''}
+        <div class="w-4 h-4 rounded-full border ${isSelected ? 'border-[#1B4332] bg-[#1B4332] flex items-center justify-center' : 'border-stone-300'}">
+          ${isSelected ? '<span class="w-1.5 h-1.5 rounded-full bg-white"></span>' : ''}
         </div>
       </button>
     `;
@@ -75,24 +75,24 @@ function renderCustomizerFlowerTiers() {
     const isSelected = tier.id === customizerState.flowerTierId;
     const name = isAr ? tier.nameAr : tier.nameEn;
     const activeClass = isSelected
-      ? 'border-amber-400 bg-amber-400/15 text-amber-200'
-      : 'border-stone-800 bg-stone-900/60 text-stone-300 hover:border-stone-700';
+      ? 'border-2 border-[#1B4332] bg-emerald-50/80 text-[#13251B] font-bold shadow-sm'
+      : 'border border-stone-200 bg-white text-stone-700 hover:border-stone-400 hover:bg-stone-50';
 
     return `
       <div 
         data-tier-id="${tier.id}"
         class="custom-tier-card p-3 rounded-xl border flex items-center justify-between transition-all cursor-pointer ${activeClass}">
         <div class="flex items-center gap-3">
-          <div class="w-11 h-11 rounded-lg overflow-hidden bg-stone-950 shrink-0 border border-stone-800">
+          <div class="w-11 h-11 rounded-lg overflow-hidden bg-stone-100 shrink-0 border border-stone-200">
             <img src="${tier.previewImg}" alt="${name}" class="w-full h-full object-cover">
           </div>
           <div>
-            <span class="text-xs font-bold text-stone-100 block">${name}</span>
-            <span class="text-[11px] font-mono text-amber-400 font-semibold">${tier.price.toFixed(3)} ${isAr ? 'ر.ع' : 'OMR'}</span>
+            <span class="text-xs font-bold text-[#13251B] block">${name}</span>
+            <span class="text-[11px] font-mono text-[#1B4332] font-bold">${tier.price.toFixed(3)} ${isAr ? 'ر.ع' : 'OMR'}</span>
           </div>
         </div>
-        <div class="w-4 h-4 rounded-full border ${isSelected ? 'border-amber-400 bg-amber-400 flex items-center justify-center' : 'border-stone-700'}">
-          ${isSelected ? '<span class="w-1.5 h-1.5 rounded-full bg-stone-950"></span>' : ''}
+        <div class="w-4 h-4 rounded-full border ${isSelected ? 'border-[#1B4332] bg-[#1B4332] flex items-center justify-center' : 'border-stone-300'}">
+          ${isSelected ? '<span class="w-1.5 h-1.5 rounded-full bg-white"></span>' : ''}
         </div>
       </div>
     `;
@@ -109,8 +109,8 @@ function renderCustomizerChocolates() {
     const isSelected = choc.id === customizerState.chocolateId;
     const name = isAr ? choc.nameAr : choc.nameEn;
     const activeClass = isSelected
-      ? 'border-amber-400 bg-amber-400/15 text-amber-200'
-      : 'border-stone-800 bg-stone-900/60 text-stone-300 hover:border-stone-700';
+      ? 'border-2 border-[#1B4332] bg-emerald-50/80 text-[#13251B] font-bold shadow-sm'
+      : 'border border-stone-200 bg-white text-stone-700 hover:border-stone-400 hover:bg-stone-50';
 
     return `
       <button 
@@ -118,14 +118,14 @@ function renderCustomizerChocolates() {
         data-choc-id="${choc.id}"
         class="custom-choc-btn p-3 rounded-xl border text-right rtl:text-right ltr:text-left flex items-center justify-between transition-all cursor-pointer ${activeClass}">
         <div class="flex items-center gap-2.5">
-          <i data-lucide="${choc.icon || 'gift'}" class="w-4 h-4 text-amber-400 shrink-0"></i>
+          <i data-lucide="${choc.icon || 'gift'}" class="w-4 h-4 text-[#B89345] shrink-0"></i>
           <div>
-            <span class="text-xs font-bold text-stone-100 block">${name}</span>
-            <span class="text-[10px] text-stone-400">${choc.price > 0 ? `+${choc.price.toFixed(3)} ${isAr ? 'ر.ع' : 'OMR'}` : (isAr ? 'بدون تكلفة إضافية' : 'No extra cost')}</span>
+            <span class="text-xs font-bold text-[#13251B] block">${name}</span>
+            <span class="text-[10px] text-[#55645A]">${choc.price > 0 ? `+${choc.price.toFixed(3)} ${isAr ? 'ر.ع' : 'OMR'}` : (isAr ? 'بدون تكلفة إضافية' : 'No extra cost')}</span>
           </div>
         </div>
-        <div class="w-4 h-4 rounded-full border ${isSelected ? 'border-amber-400 bg-amber-400 flex items-center justify-center' : 'border-stone-700'}">
-          ${isSelected ? '<span class="w-1.5 h-1.5 rounded-full bg-stone-950"></span>' : ''}
+        <div class="w-4 h-4 rounded-full border ${isSelected ? 'border-[#1B4332] bg-[#1B4332] flex items-center justify-center' : 'border-stone-300'}">
+          ${isSelected ? '<span class="w-1.5 h-1.5 rounded-full bg-white"></span>' : ''}
         </div>
       </button>
     `;
@@ -145,12 +145,12 @@ function renderCustomizerAddons() {
     const name = isAr ? addon.nameAr : addon.nameEn;
 
     return `
-      <label class="p-3 rounded-xl border border-stone-800 bg-stone-900/60 flex items-center justify-between cursor-pointer hover:border-stone-700 transition-colors">
-        <span class="text-xs font-medium text-stone-200">${name}</span>
+      <label class="p-3 rounded-xl border border-stone-200 bg-white flex items-center justify-between cursor-pointer hover:border-[#1B4332] transition-colors shadow-2xs">
+        <span class="text-xs font-medium text-stone-800">${name}</span>
         <input 
           type="checkbox" 
           data-addon-id="${addon.id}" 
-          class="custom-addon-checkbox w-4 h-4 rounded accent-amber-400"
+          class="custom-addon-checkbox w-4 h-4 rounded accent-[#1B4332]"
           ${isChecked ? 'checked' : ''}
         />
       </label>
