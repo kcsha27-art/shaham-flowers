@@ -1,7 +1,7 @@
 /**
  * Shaham Flowers (زهور الشهم - @shaham_flowers)
  * Luxury Motion Engine: Lenis Smooth Scrolling, GSAP ScrollTrigger,
- * Aceternity Mouse Spotlight, and the Signature Rose-to-Bouquet Assembly Story.
+ * Aceternity Mouse Spotlight, and the Seamless Floral Scroll Story.
  */
 
 let lenisInstance = null;
@@ -28,10 +28,8 @@ function initLenis() {
     infinite: false,
   });
 
-  // Expose to window for global access
   window.lenis = lenisInstance;
 
-  // Bind Lenis scroll events to GSAP ScrollTrigger
   if (window.gsap && window.ScrollTrigger) {
     lenisInstance.on('scroll', ScrollTrigger.update);
 
@@ -117,21 +115,21 @@ function initHeaderMotion() {
   });
 }
 
-// 4. The Show-Stopping Rose-to-Bouquet ("Boke") & Chocolate Combo Assembly
+// 4. Clean, High-Fidelity Floral & Bouquet ("Boke") Scroll Story
 function initBloomAssemblyStory() {
   if (!window.gsap || !window.ScrollTrigger) return;
 
   const section = document.querySelector('#bloom-assembly-story');
   if (!section) return;
 
-  // Master scrubbed timeline
+  // Master scrubbed timeline for smooth stage transitions
   assemblyTimeline = gsap.timeline({
     scrollTrigger: {
       trigger: '#bloom-assembly-story',
       start: 'top top',
-      end: '+=2800',
+      end: '+=2400',
       pin: true,
-      scrub: 1,
+      scrub: 0.8,
       anticipatePin: 1,
       onUpdate: (self) => {
         updateAssemblyIndicators(self.progress);
@@ -139,50 +137,26 @@ function initBloomAssemblyStory() {
     },
   });
 
-  // Timeline Step Breakdown:
-  // Progress 0.00 - 0.25: Stage 1 (Single Rose S201)
-  // Progress 0.25 - 0.55: Stage 2 (5 Roses Assemble S203)
-  // Progress 0.55 - 0.80: Stage 3 (Ruffle Net Wrap & Ribbon S204)
-  // Progress 0.80 - 1.00: Stage 4 (Bouquet + Chocolate Combo Box S202 & Sweets)
+  // Stage 1 -> Stage 2 (Single Rose S201 to 5-Rose Hand Bouquet S203)
+  assemblyTimeline
+    .to('#story-visual-1', { opacity: 0, scale: 0.94, duration: 1, ease: 'power2.inOut' }, 1)
+    .fromTo('#story-visual-2', { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: 1, ease: 'power2.inOut' }, 1)
+    .to('#story-card-1', { opacity: 0, y: -25, duration: 0.8, ease: 'power2.inOut' }, 1)
+    .fromTo('#story-card-2', { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.inOut' }, 1.2);
 
-  // Floating petals drifting throughout
-  assemblyTimeline.to('.assembly-petal', {
-    y: 200,
-    x: 'random(-60, 60)',
-    rotation: 'random(-180, 180)',
-    stagger: 0.1,
-    ease: 'none',
-    duration: 4,
-  }, 0);
+  // Stage 2 -> Stage 3 (5-Rose Hand Bouquet to White Mix Ruffle Net Bouquet S204)
+  assemblyTimeline
+    .to('#story-visual-2', { opacity: 0, scale: 0.94, duration: 1, ease: 'power2.inOut' }, 2.5)
+    .fromTo('#story-visual-3', { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: 1, ease: 'power2.inOut' }, 2.5)
+    .to('#story-card-2', { opacity: 0, y: -25, duration: 0.8, ease: 'power2.inOut' }, 2.5)
+    .fromTo('#story-card-3', { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.inOut' }, 2.7);
 
-  // Transition from Stage 1 to Stage 2:
-  // Surrounding 4 companion roses fly in, gypsophila blooms cluster in
-  assemblyTimeline.to('#stage1-card', { opacity: 0, y: -20, duration: 0.5 }, 0.6)
-    .fromTo('#stage2-card', { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.6 }, 0.8)
-    .to('#rose-companion-1', { x: 0, y: 0, scale: 1, opacity: 1, rotation: -12, ease: 'power2.out', duration: 1 }, 0.5)
-    .to('#rose-companion-2', { x: 0, y: 0, scale: 1, opacity: 1, rotation: 14, ease: 'power2.out', duration: 1 }, 0.6)
-    .to('#rose-companion-3', { x: 0, y: 0, scale: 1, opacity: 1, rotation: -22, ease: 'power2.out', duration: 1 }, 0.7)
-    .to('#rose-companion-4', { x: 0, y: 0, scale: 1, opacity: 1, rotation: 18, ease: 'power2.out', duration: 1 }, 0.8)
-    .to('#gypso-cluster', { opacity: 1, scale: 1, duration: 1 }, 0.8)
-    .to('#center-rose-stem', { scale: 0.95, duration: 1 }, 0.8);
-
-  // Transition from Stage 2 to Stage 3:
-  // Grand Pleated Couture Net Wrap wraps around stems, satin ribbon animates in
-  assemblyTimeline.to('#stage2-card', { opacity: 0, y: -20, duration: 0.5 }, 1.6)
-    .fromTo('#stage3-card', { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.6 }, 1.8)
-    .to('#net-wrap-pleats', { opacity: 1, scale: 1, rotation: 0, duration: 1, ease: 'back.out(1.2)' }, 1.6)
-    .to('#satin-ribbon-bow', { opacity: 1, scale: 1, duration: 0.8, ease: 'back.out(1.5)' }, 2.0)
-    .to('#mixed-petals-accent', { opacity: 1, scale: 1, duration: 0.8 }, 2.0);
-
-  // Transition from Stage 3 to Stage 4:
-  // Bouquet nests into gift box + Gourmet Chocolates & Acrylic tag slide in
-  assemblyTimeline.to('#stage3-card', { opacity: 0, y: -20, duration: 0.5 }, 2.6)
-    .fromTo('#stage4-card', { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.6 }, 2.8)
-    .to('#assembled-bouquet-group', { y: -30, scale: 0.85, duration: 1, ease: 'power2.inOut' }, 2.6)
-    .to('#luxury-gift-box', { opacity: 1, y: 0, scale: 1, duration: 1, ease: 'power3.out' }, 2.7)
-    .to('#chocolate-drawer', { opacity: 1, x: 0, duration: 1, ease: 'power3.out' }, 3.0)
-    .to('#acrylic-calligraphy-tag', { opacity: 1, scale: 1, duration: 0.8, ease: 'back.out(1.7)' }, 3.2)
-    .to('#sparkle-particles', { opacity: 1, duration: 0.6 }, 3.2);
+  // Stage 3 -> Stage 4 (White Mix Bouquet to Flower & Belgian Chocolates Combo)
+  assemblyTimeline
+    .to('#story-visual-3', { opacity: 0, scale: 0.94, duration: 1, ease: 'power2.inOut' }, 4)
+    .fromTo('#story-visual-4', { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: 1, ease: 'power2.inOut' }, 4)
+    .to('#story-card-3', { opacity: 0, y: -25, duration: 0.8, ease: 'power2.inOut' }, 4)
+    .fromTo('#story-card-4', { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.inOut' }, 4.2);
 
   // Interactive Stage Clickers
   document.querySelectorAll('.stage-pill').forEach((pill) => {
@@ -213,23 +187,40 @@ function updateAssemblyIndicators(progress) {
 
   if (progress < 0.28) {
     activeIndex = 0; // Stage 1: Single Rose (.700Bz)
+    enablePointerEvents(1);
   } else if (progress < 0.58) {
     activeIndex = 1; // Stage 2: 5 Roses Hand Bouquet (2.500 OMR)
+    enablePointerEvents(2);
   } else if (progress < 0.82) {
     activeIndex = 2; // Stage 3: Ruffle Net Grand Bouquet (10.000 OMR)
+    enablePointerEvents(3);
   } else {
-    activeIndex = 3; // Stage 4: Flower + Chocolate Combo (Bespoke Box)
+    activeIndex = 3; // Stage 4: Flower & Chocolate Combo
+    enablePointerEvents(4);
   }
 
   pills.forEach((pill, idx) => {
     if (idx === activeIndex) {
-      pill.classList.add('active', 'border-amber-400', 'text-amber-300', 'bg-amber-400/10');
+      pill.classList.add('active', 'border-amber-400', 'text-amber-300', 'bg-amber-400/15');
       pill.classList.remove('border-stone-800', 'text-stone-400');
     } else {
-      pill.classList.remove('active', 'border-amber-400', 'text-amber-300', 'bg-amber-400/10');
+      pill.classList.remove('active', 'border-amber-400', 'text-amber-300', 'bg-amber-400/15');
       pill.classList.add('border-stone-800', 'text-stone-400');
     }
   });
+}
+
+function enablePointerEvents(stageNum) {
+  for (let i = 1; i <= 4; i++) {
+    const card = document.getElementById(`story-card-${i}`);
+    const visual = document.getElementById(`story-visual-${i}`);
+    if (card) {
+      card.style.pointerEvents = (i === stageNum) ? 'auto' : 'none';
+    }
+    if (visual) {
+      visual.style.pointerEvents = (i === stageNum) ? 'auto' : 'none';
+    }
+  }
 }
 
 if (typeof module !== 'undefined' && module.exports) {
