@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initIcons();
   initLangToggle();
   applyLanguage(window.currentLang);
+  initHeroVideoSlomo();
   initModal();
   initFab();
   initMobileNav();
@@ -412,6 +413,27 @@ function initMobileNav() {
     link.addEventListener('click', () => {
       drawer.classList.add('hidden');
     });
+  });
+}
+
+// 9. Hero Background Video Slow-Motion Controller (50% playback speed)
+function initHeroVideoSlomo() {
+  const heroVideo = document.getElementById('hero-bg-video') || document.querySelector('#hero video');
+  if (!heroVideo) return;
+
+  const targetSpeed = 0.5; // Silky smooth slow-motion atelier pace (50% speed)
+  
+  const enforceSpeed = () => {
+    if (heroVideo.playbackRate !== targetSpeed) {
+      heroVideo.playbackRate = targetSpeed;
+    }
+  };
+
+  heroVideo.defaultPlaybackRate = targetSpeed;
+  heroVideo.playbackRate = targetSpeed;
+
+  ['loadedmetadata', 'canplay', 'play', 'playing', 'seeked', 'timeupdate'].forEach((evt) => {
+    heroVideo.addEventListener(evt, enforceSpeed);
   });
 }
 

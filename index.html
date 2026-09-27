@@ -241,6 +241,7 @@
       <!-- Looping HTML5 Video Background: High-Definition Roses (Pexels 6911359) -->
       <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
         <video 
+          id="hero-bg-video"
           autoplay 
           loop 
           muted 
@@ -253,6 +254,16 @@
           <source src="videos/hero-roses.mp4" type="video/mp4">
           <source src="assets/videos/hero-roses.mp4" type="video/mp4">
         </video>
+        <!-- Immediate Hero Video Slomo Setup -->
+        <script>
+          (function() {
+            var v = document.getElementById('hero-bg-video');
+            if (v) {
+              v.defaultPlaybackRate = 0.5;
+              v.playbackRate = 0.5;
+            }
+          })();
+        </script>
         <!-- Cinematic Vignette Overlay -->
         <div class="absolute inset-0 bg-gradient-to-r rtl:bg-gradient-to-l from-[#06110D]/95 via-[#06110D]/75 to-[#06110D]/25 pointer-events-none"></div>
       </div>
