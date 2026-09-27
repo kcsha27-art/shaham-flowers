@@ -238,7 +238,7 @@
     <!-- HERO SECTION: FULL-BLEED CINEMATIC FLORIST VIDEO (min-h-[100dvh] w-full flex flex-col justify-between) -->
     <section id="hero" class="relative min-h-[100dvh] w-full flex flex-col justify-between overflow-hidden bg-[#06110D] pt-28 pb-8 sm:pt-32 sm:pb-10 px-4 sm:px-6 lg:px-8">
       
-      <!-- Looping HTML5 Video Background: Real Floral Atelier (Hands Arranging Roses) -->
+      <!-- Looping HTML5 Video Background: High-Definition Roses (Pexels 6911359) -->
       <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
         <video 
           autoplay 
@@ -246,20 +246,15 @@
           muted 
           playsinline 
           preload="auto"
-          src="videos/florist-arranging-roses.mp4"
-          class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none filter saturate-[1.15] contrast-[1.06]">
-          <source src="videos/florist-arranging-roses.mp4" type="video/mp4">
-          <source src="assets/videos/florist-arranging-roses.mp4" type="video/mp4">
-          <source src="assets/videos/hero_florist.mp4" type="video/mp4">
-          <source src="https://assets.mixkit.co/videos/41662/41662-720.mp4" type="video/mp4">
-          <source src="https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-florist-arranging-a-bouquet-41662-large.mp4" type="video/mp4">
+          src="https://videos.pexels.com/video-files/6911359/6911359-hd_1080_1920_24fps.mp4"
+          class="w-full h-full object-cover object-center pointer-events-none">
+          <source src="https://videos.pexels.com/video-files/6911359/6911359-hd_1080_1920_24fps.mp4" type="video/mp4">
+          <source src="hero-roses.mp4" type="video/mp4">
+          <source src="videos/hero-roses.mp4" type="video/mp4">
+          <source src="assets/videos/hero-roses.mp4" type="video/mp4">
         </video>
-
-        <!-- Sophisticated Cinematic Vignette (Warm florals shine on right, deep contrast on left/center) -->
-        <div class="absolute inset-0 bg-[#06110D]/40 pointer-events-none"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-[#06110D] via-transparent to-[#06110D]/85 pointer-events-none"></div>
-        <div class="absolute inset-0 bg-gradient-to-r rtl:bg-gradient-to-l from-[#06110D]/95 via-[#06110D]/70 to-transparent pointer-events-none"></div>
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_35%_45%,rgba(6,17,13,0.75)_0%,rgba(6,17,13,0.35)_55%,transparent_85%)] pointer-events-none"></div>
+        <!-- Cinematic Vignette Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-r rtl:bg-gradient-to-l from-[#06110D]/95 via-[#06110D]/75 to-[#06110D]/25 pointer-events-none"></div>
       </div>
 
       <!-- Main Hero Content: Centered Vertically with Optical Depth -->
