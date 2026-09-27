@@ -4,18 +4,23 @@
  * Bilingual switcher, Modal Drawer, and Structured WhatsApp URL Engine.
  */
 
-window.currentLang = 'ar'; // Default Arabic for Oman
+window.currentLang = (function() {
+  try {
+    return localStorage.getItem('shaham_lang') || 'ar';
+  } catch (e) {
+    return 'ar';
+  }
+})();
 let currentCategory = 'all';
 let activeModalProduct = null;
 
 document.addEventListener('DOMContentLoaded', () => {
   initIcons();
-  renderCategories();
-  renderCatalog();
+  initLangToggle();
+  applyLanguage(window.currentLang);
   initModal();
   initFab();
   initMobileNav();
-  initLangToggle();
   initCustomOrderForm();
 });
 
@@ -326,14 +331,19 @@ function initLangToggle() {
   });
 }
 
-function toggleLanguage() {
-  window.currentLang = window.currentLang === 'ar' ? 'en' : 'ar';
-  const isAr = window.currentLang === 'ar';
+function applyLanguage(lang) {
+  window.currentLang = lang;
+  try {
+    localStorage.setItem('shaham_lang', lang);
+  } catch (e) {}
+
+  const isAr = lang === 'ar';
 
   // Update HTML attributes
   document.documentElement.lang = isAr ? 'ar' : 'en';
   document.documentElement.dir = isAr ? 'rtl' : 'ltr';
-  document.body.className = isAr ? document.body.className.replace('ltr', 'rtl') : document.body.className.replace('rtl', 'ltr');
+  document.body.classList.toggle('rtl', isAr);
+  document.body.classList.toggle('ltr', !isAr);
 
   // Update text elements with data-ar and data-en
   document.querySelectorAll('[data-ar][data-en]').forEach((el) => {
@@ -347,15 +357,35 @@ function toggleLanguage() {
     }
   });
 
-  // Re-render components
+  // Update document title if present
+  const titleEl = document.querySelector('title[data-ar][data-en]');
+  if (titleEl) {
+    document.title = isAr ? titleEl.getAttribute('data-ar') : titleEl.getAttribute('data-en');
+  }
+
+  // Re-render categories & catalog
   renderCategories();
   renderCatalog();
 
+  // Re-render customizer
   if (window.refreshCustomizerLanguage) {
     window.refreshCustomizerLanguage();
   }
 
+  // If product modal is open, refresh its content in the active language
+  if (activeModalProduct) {
+    const modal = document.getElementById('product-modal');
+    if (modal && !modal.classList.contains('hidden')) {
+      openProductModal(activeModalProduct.id);
+    }
+  }
+
   initIcons();
+}
+
+function toggleLanguage() {
+  const nextLang = window.currentLang === 'ar' ? 'en' : 'ar';
+  applyLanguage(nextLang);
 }
 
 function initCustomOrderForm() {
