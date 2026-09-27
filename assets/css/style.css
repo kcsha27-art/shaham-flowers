@@ -208,16 +208,26 @@ html[dir="rtl"], body.rtl {
   transform: translateY(-2px);
 }
 
-/* Ultra-Luxury Gold Glow Button */
+/* Ultra-Luxury Gold Glow Button with Slow Pulsing Border Glow */
+@keyframes goldGlowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.35), 0 0 0 1px rgba(229, 201, 146, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(212, 175, 55, 0.6), 0 0 0 4px rgba(229, 201, 146, 0.25);
+  }
+}
+
 .gold-glow-btn {
   background: linear-gradient(135deg, #D4AF37 0%, #E5C992 50%, #F3E0AC 100%);
   color: #0A110D;
   font-weight: 800;
-  box-shadow: 0 0 25px rgba(212, 175, 55, 0.35);
+  animation: goldGlowPulse 3.2s infinite ease-in-out;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .gold-glow-btn:hover {
-  box-shadow: 0 0 35px rgba(229, 201, 146, 0.55);
+  animation: none;
+  box-shadow: 0 0 40px rgba(229, 201, 146, 0.7), 0 0 0 3px rgba(229, 201, 146, 0.5);
   transform: scale(1.03);
 }
 
