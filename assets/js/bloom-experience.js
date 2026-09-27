@@ -74,13 +74,17 @@ function initHeaderMotion() {
   if (!window.gsap) return;
 
   const header = document.querySelector('header');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      header.classList.add('shadow-sm', 'bg-white/95');
-    } else {
-      header.classList.remove('shadow-sm', 'bg-white/95');
-    }
-  });
+  if (header) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 30) {
+        header.classList.add('bg-[#06110D]/90', 'shadow-2xl', 'border-white/15');
+        header.classList.remove('bg-[#06110D]/70');
+      } else {
+        header.classList.remove('bg-[#06110D]/90', 'shadow-2xl', 'border-white/15');
+        header.classList.add('bg-[#06110D]/70');
+      }
+    });
+  }
 
   gsap.from('.hero-badge', {
     y: -25,
