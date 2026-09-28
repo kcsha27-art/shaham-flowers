@@ -115,28 +115,28 @@
     <!-- MAIN LUXURY NAVIGATION BAR (Height 60px on mobile, 68px on desktop) -->
     <div class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 h-15 sm:h-18 flex items-center justify-between gap-2 sm:gap-4">
       
-      <!-- Brand Logo & Emblem -->
-      <a href="#hero" class="flex items-center gap-2.5 sm:gap-3 group min-w-0">
+      <!-- Brand Logo & Emblem (shrink-0 so brand name never truncates) -->
+      <a href="#hero" class="flex items-center gap-2.5 sm:gap-3 group shrink-0">
         <img 
           src="assets/images/shaham_logo.png" 
           alt="Shaham Flowers Emblem" 
-          class="w-9 h-9 sm:w-12 sm:h-12 rounded-full object-contain bg-white/95 p-0.5 shadow-md border border-white/20 group-hover:scale-105 transition-transform shrink-0"
+          class="w-9 h-9 sm:w-11 sm:h-11 rounded-full object-contain bg-white/95 p-0.5 shadow-md border border-white/20 group-hover:scale-105 transition-transform shrink-0"
         />
-        <div class="flex flex-col justify-center min-w-0">
-          <span class="font-luxury font-bold text-sm sm:text-xl tracking-wider text-[#F9F9F9] block leading-tight truncate">
+        <div class="flex flex-col justify-center shrink-0">
+          <span class="font-luxury font-bold text-base sm:text-xl tracking-wider text-[#F9F9F9] block leading-tight whitespace-nowrap">
             SHAHAM FLOWERS
           </span>
-          <span class="hidden sm:block text-[10px] sm:text-[11px] font-semibold text-[#E5C992] tracking-wider truncate" data-en="Flowers • Chocolates • Customized Gifts & More" data-ar="زهور • شوكولاتة • هدايا مخصصة وأكثر">
+          <span class="hidden sm:block text-[10px] sm:text-[11px] font-semibold text-[#E5C992] tracking-wider whitespace-nowrap" data-en="Flowers • Chocolates • Customized Gifts & More" data-ar="زهور • شوكولاتة • هدايا مخصصة وأكثر">
             زهور • شوكولاتة • هدايا مخصصة وأكثر
           </span>
-          <span class="sm:hidden text-[9px] font-semibold text-[#E5C992] tracking-wide" data-en="Alaya, Ibra • Flowers & Gifts" data-ar="العلاية، إبراء • زهور وهدايا">
+          <span class="sm:hidden text-[9px] font-semibold text-[#E5C992] tracking-wide whitespace-nowrap" data-en="Alaya, Ibra • Flowers & Gifts" data-ar="العلاية، إبراء • زهور وهدايا">
             العلاية، إبراء • زهور وهدايا
           </span>
         </div>
       </a>
 
       <!-- Center Nav Links: Alabaster White (#F9F9F9) with Champagne Gold (#E5C992) hover transitions -->
-      <nav class="hidden xl:flex items-center gap-6 2xl:gap-8 text-sm font-medium text-[#F9F9F9]/90 shrink-0">
+      <nav class="hidden xl:flex items-center gap-4 2xl:gap-7 text-xs sm:text-sm font-medium text-[#F9F9F9]/90 shrink-0">
         <a href="#bloom-assembly-story" class="hover:text-[#E5C992] transition-colors flex items-center gap-1.5 whitespace-nowrap group">
           <span class="text-xs text-[#E5C992]/70 group-hover:text-[#E5C992]">01</span>
           <span data-en="The Journey" data-ar="رحلة الباقة">رحلة الباقة</span>
@@ -980,14 +980,24 @@
             </div>
           </div>
 
-          <a 
-            href="https://www.instagram.com/shaham_flowers/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            class="px-5 py-2.5 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-bold text-xs flex items-center gap-2 shadow-sm transition-all hover:scale-105">
-            <i data-lucide="instagram" class="w-4 h-4"></i>
-            <span data-en="Follow on Instagram" data-ar="متابعة على إنستغرام">متابعة على إنستغرام</span>
-          </a>
+          <div class="flex items-center gap-2">
+            <a 
+              href="insta-qr.html" 
+              class="px-4 py-2.5 rounded-full bg-stone-100 hover:bg-stone-200 text-[#13251B] font-bold text-xs flex items-center gap-2 border border-stone-300 transition-all hover:scale-105 shadow-2xs"
+              title="كود إنستغرام وطباعة الستاندات">
+              <i data-lucide="qr-code" class="w-4 h-4 text-[#1B4332]"></i>
+              <span data-en="QR Standee" data-ar="كود وستاند إنستغرام">كود وستاند إنستغرام</span>
+            </a>
+
+            <a 
+              href="https://www.instagram.com/shaham_flowers/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="px-5 py-2.5 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-bold text-xs flex items-center gap-2 shadow-sm transition-all hover:scale-105">
+              <i data-lucide="instagram" class="w-4 h-4"></i>
+              <span data-en="Follow on Instagram" data-ar="متابعة على إنستغرام">متابعة على إنستغرام</span>
+            </a>
+          </div>
         </div>
 
         <!-- 4 Visual Gallery Items -->
@@ -1203,6 +1213,9 @@
         </a>
         <a href="https://www.instagram.com/shaham_flowers/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white border border-stone-300 hover:border-pink-500 flex items-center justify-center text-pink-600 hover:text-white hover:bg-pink-600 transition-all shadow-2xs" title="Instagram">
           <i data-lucide="instagram" class="w-4 h-4"></i>
+        </a>
+        <a href="insta-qr.html" class="w-10 h-10 rounded-full bg-white border border-stone-300 hover:border-[#D4AF37] flex items-center justify-center text-[#1B4332] hover:text-black hover:bg-[#D4AF37] transition-all shadow-2xs" title="Instagram QR Studio">
+          <i data-lucide="qr-code" class="w-4 h-4"></i>
         </a>
         <a href="https://share.google/tIfg9DtMQ6ufnoszy" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white border border-stone-300 hover:border-[#1B4332] flex items-center justify-center text-[#1B4332] hover:bg-[#1B4332] hover:text-white transition-all shadow-2xs" title="Google Maps">
           <i data-lucide="map-pin" class="w-4 h-4"></i>
