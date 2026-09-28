@@ -231,19 +231,19 @@ html[dir="rtl"], body.rtl {
   transform: scale(1.03);
 }
 
-/* Trust Dock Frosted Item */
+/* Trust Dock Frosted Item (Deep emerald frosted glass, immune to iOS WebKit blur bugs) */
 .trust-dock-item {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(6, 17, 13, 0.78) !important;
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .trust-dock-item:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(6, 17, 13, 0.9) !important;
   border-color: rgba(229, 201, 146, 0.4);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.4), 0 0 20px rgba(229, 201, 146, 0.15);
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.5), 0 0 20px rgba(229, 201, 146, 0.15);
 }
 
 /* FAB Pulse */

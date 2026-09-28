@@ -112,22 +112,25 @@
       </div>
     </div>
 
-    <!-- MAIN LUXURY NAVIGATION BAR (Height 68px) -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-17 sm:h-18 flex items-center justify-between gap-4">
+    <!-- MAIN LUXURY NAVIGATION BAR (Height 60px on mobile, 68px on desktop) -->
+    <div class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 h-15 sm:h-18 flex items-center justify-between gap-2 sm:gap-4">
       
       <!-- Brand Logo & Emblem -->
-      <a href="#hero" class="flex items-center gap-3 shrink-0 group">
+      <a href="#hero" class="flex items-center gap-2.5 sm:gap-3 group min-w-0">
         <img 
           src="assets/images/shaham_logo.png" 
           alt="Shaham Flowers Emblem" 
-          class="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-contain bg-white/95 p-0.5 shadow-md border border-white/20 group-hover:scale-105 transition-transform shrink-0"
+          class="w-9 h-9 sm:w-12 sm:h-12 rounded-full object-contain bg-white/95 p-0.5 shadow-md border border-white/20 group-hover:scale-105 transition-transform shrink-0"
         />
-        <div class="shrink-0 flex flex-col justify-center">
-          <span class="font-luxury font-bold text-base sm:text-xl tracking-wider text-[#F9F9F9] block leading-tight">
+        <div class="flex flex-col justify-center min-w-0">
+          <span class="font-luxury font-bold text-sm sm:text-xl tracking-wider text-[#F9F9F9] block leading-tight truncate">
             SHAHAM FLOWERS
           </span>
-          <span class="text-[10px] sm:text-[11px] font-semibold text-[#E5C992] tracking-wider block" data-en="Flowers • Chocolates • Customized Gifts & More" data-ar="زهور • شوكولاتة • هدايا مخصصة وأكثر">
+          <span class="hidden sm:block text-[10px] sm:text-[11px] font-semibold text-[#E5C992] tracking-wider truncate" data-en="Flowers • Chocolates • Customized Gifts & More" data-ar="زهور • شوكولاتة • هدايا مخصصة وأكثر">
             زهور • شوكولاتة • هدايا مخصصة وأكثر
+          </span>
+          <span class="sm:hidden text-[9px] font-semibold text-[#E5C992] tracking-wide" data-en="Alaya, Ibra • Flowers & Gifts" data-ar="العلاية، إبراء • زهور وهدايا">
+            العلاية، إبراء • زهور وهدايا
           </span>
         </div>
       </a>
@@ -168,15 +171,15 @@
           <span>@shaham_flowers</span>
         </a>
 
-        <!-- Compact Luxury WhatsApp Button -->
+        <!-- Compact Luxury WhatsApp Button (Circular icon on mobile, full pill on sm+) -->
         <a 
           href="https://wa.me/96899791925?text=Hello%20Shaham%20Flowers%2C%20I%20would%20like%20to%20order%20flowers" 
           target="_blank" 
           rel="noopener noreferrer"
-          class="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs font-bold text-white bg-emerald-600/90 hover:bg-emerald-500 border border-emerald-400/40 flex items-center gap-1.5 shadow-[0_0_15px_rgba(37,211,102,0.25)] hover:shadow-[0_0_20px_rgba(37,211,102,0.4)] transition-all hover:scale-105 shrink-0 whitespace-nowrap">
-          <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-100"></i>
+          aria-label="Order on WhatsApp"
+          class="w-9 h-9 sm:w-auto px-0 sm:px-4 py-0 sm:py-2 rounded-full text-xs font-bold text-white bg-emerald-600/90 hover:bg-emerald-500 border border-emerald-400/40 flex items-center justify-center gap-1.5 shadow-[0_0_15px_rgba(37,211,102,0.25)] hover:shadow-[0_0_20px_rgba(37,211,102,0.4)] transition-all hover:scale-105 shrink-0 whitespace-nowrap">
+          <i data-lucide="message-circle" class="w-4 h-4 text-emerald-100"></i>
           <span class="hidden sm:inline" data-en="WhatsApp (9979 1925)" data-ar="واتساب: 9979 1925">واتساب: 9979 1925</span>
-          <span class="sm:hidden font-mono text-[11px]">9979 1925</span>
         </a>
 
         <!-- Mobile / Tablet Hamburger Toggle Button (xl:hidden) -->
@@ -184,8 +187,8 @@
           type="button" 
           id="mobile-nav-toggle-btn"
           aria-label="Toggle Mobile Menu"
-          class="xl:hidden w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 hover:border-[#E5C992]/50 text-white flex items-center justify-center transition-colors cursor-pointer shrink-0">
-          <i data-lucide="menu" class="w-5 h-5 text-[#E5C992]"></i>
+          class="xl:hidden w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/20 bg-white/10 hover:bg-white/15 hover:border-[#E5C992]/50 text-white flex items-center justify-center transition-colors cursor-pointer shrink-0">
+          <i data-lucide="menu" class="w-4.5 h-4.5 text-[#E5C992]"></i>
         </button>
       </div>
 
@@ -236,7 +239,7 @@
   <main class="pt-0">
 
     <!-- HERO SECTION: FULL-BLEED CINEMATIC FLORIST VIDEO (min-h-[100dvh] w-full flex flex-col justify-between) -->
-    <section id="hero" class="relative min-h-[100dvh] w-full flex flex-col justify-between overflow-hidden bg-[#06110D] pt-28 pb-8 sm:pt-32 sm:pb-10 px-4 sm:px-6 lg:px-8">
+    <section id="hero" class="relative min-h-[100dvh] w-full flex flex-col justify-between overflow-hidden bg-[#06110D] pt-24 pb-6 sm:pt-32 sm:pb-10 px-4 sm:px-6 lg:px-8">
       
       <!-- Looping HTML5 Video Background: High-Definition Roses (Pexels 6911359) -->
       <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
@@ -275,7 +278,7 @@
         <div class="absolute -top-20 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-[#D4AF37]/15 rounded-full blur-[100px] pointer-events-none"></div>
 
         <!-- Eyebrow Badge (Small Glowing Pill) -->
-        <div class="hero-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-[#E5C992]/40 text-[#E5C992] text-[11px] font-bold tracking-[0.15em] uppercase mb-6 backdrop-blur-md shadow-[0_0_15px_rgba(229,201,146,0.15)]">
+        <div class="hero-badge inline-flex items-center gap-2 px-3.5 py-1 sm:px-4 sm:py-1.5 rounded-full bg-white/5 border border-[#E5C992]/40 text-[#E5C992] text-[10px] sm:text-[11px] font-bold tracking-[0.15em] uppercase mb-4 sm:mb-6 backdrop-blur-md shadow-[0_0_15px_rgba(229,201,146,0.15)]">
           <span class="w-1.5 h-1.5 rounded-full bg-[#E5C992] animate-ping"></span>
           <span data-en="✦ FRESH FLOWER BOUTIQUE • ALAYA, IBRA ✦" data-ar="✦ بوتيك الزهور الطبيعية • العلاية، إبراء ✦">
             ✦ بوتيك الزهور الطبيعية • العلاية، إبراء ✦
@@ -283,7 +286,7 @@
         </div>
 
         <!-- Main Headline (Cormorant Garamond Serif with Shimmering Champagne Gold Cursive) -->
-        <h1 class="hero-headline font-luxury text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight text-[#F9F9F9] leading-[1.08] max-w-4xl relative">
+        <h1 class="hero-headline font-luxury text-3xl sm:text-5xl lg:text-7xl font-semibold tracking-tight text-[#F9F9F9] leading-[1.1] max-w-4xl relative">
           <span class="block">
             <span data-en="Fresh Natural Flowers" data-ar="باقات الورد الطبيعي">باقات الورد الطبيعي</span>
             <span class="italic font-serif text-[#E5C992] font-normal" data-en="&" data-ar="و">&amp;</span>
@@ -295,16 +298,16 @@
         </h1>
 
         <!-- Subtitle (Option 1: Clean, Warm & Premium) -->
-        <p class="hero-sub mt-5 sm:mt-6 text-sm sm:text-base lg:text-lg text-stone-200/90 max-w-2xl leading-relaxed font-light" data-en="Hand-arranged fresh roses, royal bridal bouquets, and luxury Belgian chocolates. Made fresh daily in Alaya, Ibra with same-day express delivery across North Sharqiyah." data-ar="باقات ورد طبيعي منسقة بعناية، ومسكات عرائس ملكية، وشوكولاتة بلجيكية فاخرة. تُجهز يومياً في متجرنا بالعلاية، إبراء مع توصيل سريع في نفس اليوم لكافة ولايات شمال الشرقية.">
+        <p class="hero-sub mt-4 sm:mt-6 text-xs sm:text-base lg:text-lg text-stone-200/90 max-w-2xl leading-relaxed font-light px-2" data-en="Hand-arranged fresh roses, royal bridal bouquets, and luxury Belgian chocolates. Made fresh daily in Alaya, Ibra with same-day express delivery across North Sharqiyah." data-ar="باقات ورد طبيعي منسقة بعناية، ومسكات عرائس ملكية، وشوكولاتة بلجيكية فاخرة. تُجهز يومياً في متجرنا بالعلاية، إبراء مع توصيل سريع في نفس اليوم لكافة ولايات شمال الشرقية.">
           باقات ورد طبيعي منسقة بعناية، ومسكات عرائس ملكية، وشوكولاتة بلجيكية فاخرة. تُجهز يومياً في متجرنا بالعلاية، إبراء مع توصيل سريع في نفس اليوم لكافة ولايات شمال الشرقية.
         </p>
 
         <!-- Clean 2-Button Hierarchy (Primary Gold Gradient with Slow Pulsing Border Glow + Secondary Glass WhatsApp) -->
-        <div class="hero-cta-group mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 w-full sm:w-auto">
+        <div class="hero-cta-group mt-6 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto">
           <!-- Primary CTA: Design Your Custom Combo -->
           <a 
             href="#custom-atelier" 
-            class="gold-glow-btn px-8 py-4 rounded-xl text-xs sm:text-sm font-extrabold flex items-center justify-center gap-2.5 shadow-[0_0_25px_rgba(212,175,55,0.35)] hover:shadow-[0_0_35px_rgba(229,201,146,0.55)] hover:scale-[1.03] transition-all duration-300 w-full sm:w-auto text-[#0A110D] group cursor-pointer">
+            class="gold-glow-btn px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl text-xs sm:text-sm font-extrabold flex items-center justify-center gap-2.5 shadow-[0_0_25px_rgba(212,175,55,0.35)] hover:shadow-[0_0_35px_rgba(229,201,146,0.55)] hover:scale-[1.03] transition-all duration-300 w-full sm:w-auto text-[#0A110D] group cursor-pointer">
             <i data-lucide="sparkles" class="w-4 h-4 text-[#0A110D] group-hover:rotate-12 transition-transform"></i>
             <span data-en="Design Your Custom Combo →" data-ar="صمم باقتك وهديتك الخاصة ←">صمم باقتك وهديتك الخاصة ←</span>
           </a>
@@ -314,57 +317,57 @@
             href="https://wa.me/96899791925?text=Hello%20Shaham%20Flowers%2C%20I%20would%20like%20to%20order" 
             target="_blank" 
             rel="noopener noreferrer" 
-            class="px-7 py-4 rounded-xl text-xs sm:text-sm font-bold bg-white/5 hover:bg-emerald-950/40 text-white border border-emerald-500/40 hover:border-emerald-400/70 flex items-center justify-center gap-2.5 shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-[1.02] w-full sm:w-auto">
+            class="px-6 py-3.5 sm:px-7 sm:py-4 rounded-xl text-xs sm:text-sm font-bold bg-white/5 hover:bg-emerald-950/40 text-white border border-emerald-500/40 hover:border-emerald-400/70 flex items-center justify-center gap-2.5 shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-[1.02] w-full sm:w-auto">
             <i data-lucide="message-circle" class="w-4 h-4 text-[#25D366]"></i>
             <span data-en="Order via WhatsApp (+968 9979 1925)" data-ar="اطلب عبر الواتساب (9979 1925)">اطلب عبر الواتساب (9979 1925)</span>
           </a>
         </div>
       </div>
 
-      <!-- LUXURY METRICS & TRUST DOCK (Horizontal Frosted Glass Dock pinned at bottom) -->
-      <div class="hero-perks relative z-10 w-full max-w-4xl mx-auto p-2 sm:p-2.5 rounded-2xl bg-white/[0.04] backdrop-blur-xl border border-white/10 shadow-2xl mt-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-2.5">
+      <!-- LUXURY METRICS & TRUST DOCK (Horizontal Swipeable Frosted Glass Dock on Mobile, 3-Col Grid on Desktop) -->
+      <div class="hero-perks relative z-10 w-full max-w-4xl mx-auto p-1.5 sm:p-2.5 rounded-2xl bg-[#06110D]/60 backdrop-blur-xl border border-white/10 shadow-2xl mt-5 sm:mt-8">
+        <div class="flex overflow-x-auto no-scrollbar gap-2.5 md:grid md:grid-cols-3 pb-0.5 md:pb-0">
           
           <!-- Col 1: Grade-A Ecuadorian & Dutch Roses -->
-          <div class="trust-dock-item p-4 rounded-xl flex items-center gap-3.5 group cursor-default">
-            <div class="w-10 h-10 rounded-xl bg-[#E5C992]/10 border border-[#E5C992]/30 flex items-center justify-center text-[#E5C992] shrink-0 group-hover:scale-110 group-hover:bg-[#E5C992]/20 transition-all duration-300 shadow-sm">
-              <i data-lucide="flower-2" class="w-5 h-5"></i>
+          <div class="trust-dock-item p-3 sm:p-4 rounded-xl flex items-center gap-3 group cursor-default shrink-0 min-w-[250px] md:min-w-0 md:shrink">
+            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#E5C992]/10 border border-[#E5C992]/30 flex items-center justify-center text-[#E5C992] shrink-0 group-hover:scale-110 transition-all shadow-sm">
+              <i data-lucide="flower-2" class="w-4 h-4 sm:w-5 sm:h-5"></i>
             </div>
             <div class="text-right rtl:text-right ltr:text-left">
               <h4 class="font-bold text-xs sm:text-[13px] text-[#F9F9F9] group-hover:text-[#E5C992] transition-colors" data-en="Grade-A Ecuadorian & Dutch Roses" data-ar="ورود إكوادورية وهولندية قطفة أولى">
                 ورود إكوادورية وهولندية قطفة أولى
               </h4>
-              <p class="text-[11px] text-stone-400 mt-0.5" data-en="Direct daily fresh arrivals" data-ar="نضارة يومية مباشرة من المزارع">
+              <p class="text-[10px] sm:text-[11px] text-stone-400 mt-0.5" data-en="Direct daily fresh arrivals" data-ar="نضارة يومية مباشرة من المزارع">
                 نضارة يومية مباشرة من المزارع
               </p>
             </div>
           </div>
 
           <!-- Col 2: Belgian Chocolate Pairings -->
-          <div class="trust-dock-item p-4 rounded-xl flex items-center gap-3.5 group cursor-default">
-            <div class="w-10 h-10 rounded-xl bg-[#E5C992]/10 border border-[#E5C992]/30 flex items-center justify-center text-[#E5C992] shrink-0 group-hover:scale-110 group-hover:bg-[#E5C992]/20 transition-all duration-300 shadow-sm">
-              <i data-lucide="gift" class="w-5 h-5"></i>
+          <div class="trust-dock-item p-3 sm:p-4 rounded-xl flex items-center gap-3 group cursor-default shrink-0 min-w-[250px] md:min-w-0 md:shrink">
+            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#E5C992]/10 border border-[#E5C992]/30 flex items-center justify-center text-[#E5C992] shrink-0 group-hover:scale-110 transition-all shadow-sm">
+              <i data-lucide="gift" class="w-4 h-4 sm:w-5 sm:h-5"></i>
             </div>
             <div class="text-right rtl:text-right ltr:text-left">
               <h4 class="font-bold text-xs sm:text-[13px] text-[#F9F9F9] group-hover:text-[#E5C992] transition-colors" data-en="Belgian Chocolate Pairings" data-ar="كومبو الشوكولاتة البلجيكية الفاخرة">
                 كومبو الشوكولاتة البلجيكية الفاخرة
               </h4>
-              <p class="text-[11px] text-stone-400 mt-0.5" data-en="Truffles, Patchi & bespoke sweets" data-ar="ترافلز، باتشي وصواني حلويات راقية">
+              <p class="text-[10px] sm:text-[11px] text-stone-400 mt-0.5" data-en="Truffles, Patchi & bespoke sweets" data-ar="ترافلز، باتشي وصواني حلويات راقية">
                 ترافلز، باتشي وصواني حلويات راقية
               </p>
             </div>
           </div>
 
           <!-- Col 3: North Sharqiyah Express -->
-          <div class="trust-dock-item p-4 rounded-xl flex items-center gap-3.5 group cursor-default">
-            <div class="w-10 h-10 rounded-xl bg-[#E5C992]/10 border border-[#E5C992]/30 flex items-center justify-center text-[#E5C992] shrink-0 group-hover:scale-110 group-hover:bg-[#E5C992]/20 transition-all duration-300 shadow-sm">
-              <i data-lucide="zap" class="w-5 h-5"></i>
+          <div class="trust-dock-item p-3 sm:p-4 rounded-xl flex items-center gap-3 group cursor-default shrink-0 min-w-[250px] md:min-w-0 md:shrink">
+            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#E5C992]/10 border border-[#E5C992]/30 flex items-center justify-center text-[#E5C992] shrink-0 group-hover:scale-110 transition-all shadow-sm">
+              <i data-lucide="zap" class="w-4 h-4 sm:w-5 sm:h-5"></i>
             </div>
             <div class="text-right rtl:text-right ltr:text-left">
               <h4 class="font-bold text-xs sm:text-[13px] text-[#F9F9F9] group-hover:text-[#E5C992] transition-colors" data-en="North Sharqiyah Express" data-ar="توصيل سريع لكافة ولايات المحافظة">
                 توصيل سريع لكافة ولايات المحافظة
               </h4>
-              <p class="text-[11px] text-stone-400 mt-0.5" data-en="Serving Ibra, Bidiyah, Mudhaibi & Qabil" data-ar="خدمة إبراء، بدية، المضيبي، والقابل">
+              <p class="text-[10px] sm:text-[11px] text-stone-400 mt-0.5" data-en="Serving Ibra, Bidiyah, Mudhaibi & Qabil" data-ar="خدمة إبراء، بدية، المضيبي، والقابل">
                 خدمة إبراء، بدية، المضيبي، والقابل
               </p>
             </div>
